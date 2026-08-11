@@ -140,8 +140,8 @@ const BusinessVerificationScreen: React.FC = () => {
           establishment.type === 'Accommodation'
             ? [accommodationFacilities.category]
             : establishment.type === 'Attraction'
-            ? attractionFacilities.categories
-            : restaurantFacilities.categories,
+              ? attractionFacilities.categories
+              : restaurantFacilities.categories,
         contactNumber: basicInfo.contactNumber,
         isAttraction: establishment.type === 'Attraction',
         latitude: basicInfo.latitude as number,
@@ -152,8 +152,8 @@ const BusinessVerificationScreen: React.FC = () => {
           establishment.type === 'Accommodation'
             ? accommodationFacilities.price
             : establishment.type === 'Attraction'
-            ? attractionFacilities.price
-            : `${restaurantFacilities.minPrice}-${restaurantFacilities.maxPrice}`,
+              ? attractionFacilities.price
+              : `${restaurantFacilities.minPrice}-${restaurantFacilities.maxPrice}`,
         amenities: accommodationFacilities.amenities || [],
         atmospheres: restaurantFacilities.atmpospheres || [],
         description: basicInfo.description,
@@ -211,7 +211,7 @@ const BusinessVerificationScreen: React.FC = () => {
     >
       <CreateBusinessHeader title={'Create Business'} />
       <View
-        className="items-center rounded-xl bg-gray-100  p-2"
+        className="items-center rounded-xl bg-gray-100 p-2"
         style={[styles.imageContainer]}
       >
         {businessImages.permitUrl ? (

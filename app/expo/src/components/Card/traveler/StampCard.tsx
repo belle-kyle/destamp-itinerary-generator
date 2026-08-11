@@ -17,7 +17,7 @@ export default function StampCard({ url }: { url: string }) {
         style={{ width: cardWidth }}
       >
         <View className="-mt-5 rounded-full bg-gray-200 p-3.5">
-          <Image source={{ uri: url }} className=" h-24 w-24 rounded-md" />
+          <Image source={{ uri: url }} className="h-24 w-24 rounded-md" />
         </View>
       </View>
     </TouchableOpacity>

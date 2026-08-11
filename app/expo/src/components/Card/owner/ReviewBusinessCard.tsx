@@ -92,7 +92,7 @@ export default function ReviewBusinessCard({
             className="mx-1.5 my-1 flex-row rounded-lg border border-pink-300 p-1"
             key={i}
           >
-            <Text className="font-poppins-medium text-[12px] text-pink-600 ">
+            <Text className="font-poppins-medium text-[12px] text-pink-600">
               {separateWords(item)}
             </Text>
           </View>
@@ -103,7 +103,7 @@ export default function ReviewBusinessCard({
 
   return isPreference ? (
     <View
-      className="my-2 h-auto rounded-xl p-1 "
+      className="my-2 h-auto rounded-xl p-1"
       {...viewProps}
       style={{ width: inputWidth }}
     >
@@ -123,7 +123,7 @@ export default function ReviewBusinessCard({
     </View>
   ) : isArray ? (
     <View
-      className="my-2 h-auto rounded-xl p-1 "
+      className="my-2 h-auto rounded-xl p-1"
       {...viewProps}
       style={{ width: inputWidth }}
     >
@@ -147,7 +147,7 @@ export default function ReviewBusinessCard({
               className="mx-1.5 my-1 flex-row rounded-lg border border-pink-300 p-1"
               key={i}
             >
-              <Text className="font-poppins-medium text-[12px] text-pink-600 ">
+              <Text className="font-poppins-medium text-[12px] text-pink-600">
                 {separateWords(activity[0])}
               </Text>
             </View>

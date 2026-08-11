@@ -29,7 +29,7 @@ export const queryPoi = async (
         ...includedFields,
       },
     });
-  } catch (error) {
+  } catch {
     throw new Error('An error occurred while fetching point of interest.');
   }
 };

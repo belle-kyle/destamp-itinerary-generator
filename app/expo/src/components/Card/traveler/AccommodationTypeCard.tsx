@@ -16,7 +16,7 @@ const AccommodationTypeCard = ({
   return isSelected ? (
     <View className="items-center">
       <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-        <View className=" h-[60] w-[70] items-center justify-center rounded-lg bg-orange-100">
+        <View className="h-[60] w-[70] items-center justify-center rounded-lg bg-orange-100">
           {icon}
         </View>
       </TouchableOpacity>
@@ -27,7 +27,7 @@ const AccommodationTypeCard = ({
   ) : (
     <View className="items-center">
       <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-        <View className=" h-[60] w-[70] items-center justify-center rounded-lg bg-gray-100">
+        <View className="h-[60] w-[70] items-center justify-center rounded-lg bg-gray-100">
           {icon}
         </View>
       </TouchableOpacity>

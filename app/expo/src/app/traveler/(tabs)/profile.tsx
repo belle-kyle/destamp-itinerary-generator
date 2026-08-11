@@ -29,7 +29,7 @@ export default function Profile() {
 
   return (
     <View className="flex-1 items-center bg-gray-50">
-      <View className=" mb-5 self-start ">
+      <View className="mb-5 self-start">
         <View
           className="items-center rounded-3xl bg-gray-100 p-4"
           style={{ width: width, height: height }}

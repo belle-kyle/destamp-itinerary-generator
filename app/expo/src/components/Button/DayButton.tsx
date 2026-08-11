@@ -21,10 +21,8 @@ export default function DayButton({
       }`}
     >
       <Text
-        className={`font-poppins-medium text-xl  ${
-          isSelected
-            ? ' font-extrabold text-white'
-            : ' font-normal text-gray-500'
+        className={`font-poppins-medium text-xl ${
+          isSelected ? 'font-extrabold text-white' : 'font-normal text-gray-500'
         }`}
       >
         DAY {day}

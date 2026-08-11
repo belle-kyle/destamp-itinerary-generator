@@ -153,9 +153,9 @@ function ClaimStampCard({ id, url, title }: ClaimStampCardProps) {
         </Text>
         <Image
           source={{ uri: url || '' }}
-          className=" my-5 h-32 w-32 self-center rounded-md"
+          className="my-5 h-32 w-32 self-center rounded-md"
         />
-        <Text className=" px-5 text-center font-poppins text-[9px] text-gray-500">
+        <Text className="px-5 text-center font-poppins text-[9px] text-gray-500">
           You can only claim one stamp per destination. If there are multiple
           trips to Iloilo City, you can only claim one stamp for Iloilo City.
         </Text>

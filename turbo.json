@@ -12,6 +12,8 @@
     },
     "lint": {},
     "lint:fix": {},
+    "format": {},
+    "format:fix": {},
     "clean": {
       "cache": false
     },

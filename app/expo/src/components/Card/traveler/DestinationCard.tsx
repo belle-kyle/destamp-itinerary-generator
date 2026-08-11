@@ -60,7 +60,7 @@ export default function DestinationCard({
 
   const screenWidth = Dimensions.get('window').width;
   return (
-    <View className="mt-5 w-[360] flex-row rounded-2xl ">
+    <View className="mt-5 w-[360] flex-row rounded-2xl">
       <View
         className="mx-7 mr-2 h-[200] rounded-2xl pr-3"
         style={{ width: screenWidth / 1.26 }}
@@ -81,7 +81,7 @@ export default function DestinationCard({
             />
           ))}
         </Swiper>
-        <View className="-mt-4 flex-row justify-between rounded-bl-2xl rounded-br-2xl bg-gray-100 py-1 ">
+        <View className="-mt-4 flex-row justify-between rounded-bl-2xl rounded-br-2xl bg-gray-100 py-1">
           <TouchableOpacity
             className="ml-1"
             onPress={onPress}
@@ -138,8 +138,8 @@ export default function DestinationCard({
             isAttraction
               ? (parseInt(price) * travelerCount).toFixed(2)
               : accommodation
-              ? price
-              : (calculateAveragePrice(price) * travelerCount).toFixed(2)
+                ? price
+                : (calculateAveragePrice(price) * travelerCount).toFixed(2)
           }
           categoryType={categoryType}
         />

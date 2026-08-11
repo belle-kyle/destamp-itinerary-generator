@@ -141,7 +141,7 @@ const BusinessProfile = () => {
                 <Back height={43} width={43} onPress={handleBack} />
                 {editing ? (
                   <TouchableOpacity
-                    className="-mr-3 rounded-xl  bg-gray-300"
+                    className="-mr-3 rounded-xl bg-gray-300"
                     activeOpacity={0.9}
                     onPress={() => setEditing(false)}
                   >
@@ -151,7 +151,7 @@ const BusinessProfile = () => {
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
-                    className="-mr-3 rounded-xl  bg-gray-300"
+                    className="-mr-3 rounded-xl bg-gray-300"
                     activeOpacity={0.9}
                     onPress={() => setEditing(true)}
                   >
@@ -187,7 +187,7 @@ const BusinessProfile = () => {
               )}
               {data.poi.price !== '0' ? (
                 <View className="absolute bottom-3 right-2 w-auto flex-row items-center rounded-xl bg-pink-100 px-3.5 py-1.5 shadow-md">
-                  <Text className="font-poppins-semibold text-lg text-[#DE4D6C] ">
+                  <Text className="font-poppins-semibold text-lg text-[#DE4D6C]">
                     ₱{data.poi.price}
                   </Text>
                   {editing && (
@@ -233,7 +233,7 @@ const BusinessProfile = () => {
             )}
             {data.poi.restaurant ? (
               <View
-                className="flex columns-2 "
+                className="flex columns-2"
                 style={{
                   width: cardWidth,
                 }}
@@ -270,7 +270,7 @@ const BusinessProfile = () => {
             )}
             {data.poi.accommodation ? (
               <View
-                className="flex columns-2 "
+                className="flex columns-2"
                 style={{
                   width: cardWidth,
                 }}

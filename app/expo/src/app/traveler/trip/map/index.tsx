@@ -171,7 +171,7 @@ export default function MapScreen() {
                 size={26}
                 color="#1A7DF1"
               />
-              <Text className="ml-1 font-poppins-medium text-base text-[#1A7DF1] ">
+              <Text className="ml-1 font-poppins-medium text-base text-[#1A7DF1]">
                 Optimize Route
               </Text>
             </TouchableOpacity>
@@ -319,20 +319,20 @@ export default function MapScreen() {
                   >
                     {poi.name}
                   </Text>
-                  <View className="flex-row ">
+                  <View className="flex-row">
                     <Image
                       source={{ uri: poi.id ? poi.images![0]!.image.url : '' }}
                       className="mt-2 h-16 w-28 rounded-md"
                     />
                     {index !== 0 ? (
-                      <View className="item-center ml-3 justify-center ">
+                      <View className="item-center ml-3 justify-center">
                         <View className="flex-row items-center justify-center rounded-xl bg-pink-100 px-1">
                           <MaterialCommunityIcons
                             name="map-marker-distance"
                             size={15}
                             color="#DE4D6C"
                           />
-                          <Text className=" ml-0.5 font-poppins text-gray-600">
+                          <Text className="ml-0.5 font-poppins text-gray-600">
                             {getTravelDistance(
                               data.trip.dailyItineraries[
                                 parseInt(selectedDay as string)

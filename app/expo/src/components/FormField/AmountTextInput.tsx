@@ -109,7 +109,7 @@ export default function AmountTextInput({
           </Text>
           <Text
             testID={textInputProps.testID + '-error'}
-            className=" font-poppins text-xs text-gray-500"
+            className="font-poppins text-xs text-gray-500"
           >
             {minBudget !== 0
               ? `Min Budget: ₱${minBudget} per person for the whole trip.`

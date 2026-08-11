@@ -121,8 +121,8 @@ export default function ReviewTripScreen() {
             tripData.travelSize === TravelSize.Group
               ? tripData.groupCount
               : tripData.travelSize === TravelSize.Family
-              ? tripData.adultCount + tripData.childCount
-              : tripData.adultCount,
+                ? tripData.adultCount + tripData.childCount
+                : tripData.adultCount,
           timeSlots: tripData.timeslots,
           startingLocation: !tripData.budgetInclusions.includes(
             ExpenseCategory.Accommodation,
@@ -218,11 +218,11 @@ export default function ReviewTripScreen() {
           />
           <Text className="font-poppins text-xl text-gray-600">Title</Text>
           <View
-            className="mb-2 h-16 flex-row items-center justify-center rounded-xl "
+            className="mb-2 h-16 flex-row items-center justify-center rounded-xl"
             style={{ width: inputWidth }}
           >
             <TextInput
-              className=" flex-1 rounded-xl border border-gray-500 py-2.5 pl-2 pr-8 font-poppins text-base text-gray-500"
+              className="flex-1 rounded-xl border border-gray-500 py-2.5 pl-2 pr-8 font-poppins text-base text-gray-500"
               value={reviewData.title}
               numberOfLines={1}
               onChangeText={(text) => handleTitleChange(text)}

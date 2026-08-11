@@ -1,4 +1,4 @@
-import { fileURLToPath } from "url";
+import { fileURLToPath } from 'url';
 
 /** @typedef  {import("prettier").Config} PrettierConfig */
 /** @typedef {import("prettier-plugin-tailwindcss").PluginOptions} TailwindConfig */
@@ -8,26 +8,26 @@ import { fileURLToPath } from "url";
 
 const config = {
   plugins: [
-    "@ianvs/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss",
+    '@ianvs/prettier-plugin-sort-imports',
+    'prettier-plugin-tailwindcss',
   ],
   singleQuote: true,
   tailwindConfig: fileURLToPath(
-    new URL("../tailwind/index.ts", import.meta.url),
+    new URL('../tailwind/index.ts', import.meta.url),
   ),
   importOrder: [
-    "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
-    "^(expo(.*)$)|^(expo$)",
-    "<THIRD_PARTY_MODULES>",
-    "",
-    "^@destamp/(.*)$",
-    "",
-    "^~/",
-    "^[../]",
-    "^[./]",
+    '^(react/(.*)$)|^(react$)|^(react-native(.*)$)',
+    '^(expo(.*)$)|^(expo$)',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '^@destamp/(.*)$',
+    '',
+    '^~/',
+    '^[../]',
+    '^[./]',
   ],
-  importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
-  importOrderTypeScriptVersion: "4.4.0",
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+  importOrderTypeScriptVersion: '4.4.0',
 };
 
 export default config;

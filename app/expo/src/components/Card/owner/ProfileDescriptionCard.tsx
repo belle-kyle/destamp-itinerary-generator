@@ -101,7 +101,7 @@ const ProfileDescription = ({
               className="my-0.5 mr-1.5 flex-row rounded-lg border border-pink-300 px-1.5"
               key={i}
             >
-              <Text className="font-poppins-medium text-[12px] text-pink-600 ">
+              <Text className="font-poppins-medium text-[12px] text-pink-600">
                 {separateWords(item)}
               </Text>
             </View>
@@ -171,7 +171,7 @@ const ProfileDescription = ({
         )}
       </View>
       {businessContactNumber ? (
-        <View className=" flex-row items-center">
+        <View className="flex-row items-center">
           <Ionicons name="ios-call-outline" size={15} color="#676464" />
           <Text className="ml-1 font-poppins text-base text-gray-500">
             {businessContactNumber}

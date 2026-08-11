@@ -17,7 +17,7 @@ const DiningStyleCard = ({
   return isSelected ? (
     <View className="items-center">
       <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-        <View className=" h-[85] w-[120] flex-row items-center justify-center rounded-lg bg-orange-100">
+        <View className="h-[85] w-[120] flex-row items-center justify-center rounded-lg bg-orange-100">
           <View className="h-16 w-24">
             <Image
               className="h-16 rounded-lg"
@@ -34,7 +34,7 @@ const DiningStyleCard = ({
   ) : (
     <View className="items-center">
       <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-        <View className=" h-[85] w-[120] flex-row items-center justify-center rounded-lg bg-gray-100">
+        <View className="h-[85] w-[120] flex-row items-center justify-center rounded-lg bg-gray-100">
           <View className="h-16 w-24">
             <Image
               className="h-16 rounded-lg"

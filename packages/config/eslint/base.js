@@ -29,15 +29,18 @@ const config = {
     indent: [1, 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
-    '@typescript-eslint/ban-types': [
+    '@typescript-eslint/no-wrapper-object-types': 'error',
+    // Replaces the removed `@typescript-eslint/ban-types` rule (v8+).
+    // Old config allowed `{}` (`types: { '{}': false }`) — keep that.
+    '@typescript-eslint/no-empty-object-type': [
       'error',
       {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
+        allowObjectTypes: 'always',
+        allowInterfaces: 'always',
       },
     ],
+    // RN/Metro codebases legitimately use require() for assets/native modules.
+    '@typescript-eslint/no-require-imports': 'off',
     'react/no-unescaped-entities': 0,
   },
   ignorePatterns: [

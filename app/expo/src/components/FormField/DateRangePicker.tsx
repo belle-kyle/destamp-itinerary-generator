@@ -58,8 +58,8 @@ export default function DateRangePicker({
                   endDate.toISOString(),
                 )}`
               : startDate && (!endDate || startDate.isSame(endDate))
-              ? dateFormmater(startDate.toISOString())
-              : ''}
+                ? dateFormmater(startDate.toISOString())
+                : ''}
           </Text>
           <Text className="font-poppins text-base text-gray-600">
             {startDate

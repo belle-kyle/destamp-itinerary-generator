@@ -43,7 +43,7 @@ const CustomContainer: React.FC<CustomContainerProps> = ({
       >
         {prefix}
         <TextInput
-          className="w-full font-poppins text-lg text-gray-600 "
+          className="w-full font-poppins text-lg text-gray-600"
           {...textInputProps}
           style={{
             height: Math.max(35, contentHeight),
@@ -56,7 +56,7 @@ const CustomContainer: React.FC<CustomContainerProps> = ({
       {!!errorMessage && (
         <Text
           testID={textInputProps.testID + '-error'}
-          className=" font-poppins text-xs text-red-500"
+          className="font-poppins text-xs text-red-500"
           style={{ width: errorWidth || inputWidth }}
         >
           {errorMessage}

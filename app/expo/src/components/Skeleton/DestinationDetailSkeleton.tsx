@@ -10,7 +10,7 @@ const DestinationDetailSkeleton = () => {
   const skeWidth = cardWidth;
 
   return (
-    <View className=" flex-1 self-center">
+    <View className="flex-1 self-center">
       <Stack.Screen
         options={{
           headerShown: false,

@@ -153,7 +153,7 @@ const BusinessBasicInformation: React.FC = () => {
           }}
         />
         <Question question={'Contact Information'} />
-        <View className="flex-row ">
+        <View className="flex-row">
           <Controller
             control={control}
             name="contactNumber"

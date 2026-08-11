@@ -248,8 +248,8 @@ export default function ItineraryCard({
                         item.poi.isAttraction
                           ? ExpenseCategory.Sightseeing
                           : item.poi.restaurant
-                          ? ExpenseCategory.Food
-                          : ExpenseCategory.Accommodation
+                            ? ExpenseCategory.Food
+                            : ExpenseCategory.Accommodation
                       }
                       tripId={tripId}
                       timeSlot={

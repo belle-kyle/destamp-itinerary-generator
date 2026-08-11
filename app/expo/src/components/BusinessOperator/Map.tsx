@@ -181,7 +181,7 @@ const Map: React.FC<MapProps> = (props: MapProps) => {
         {search ? (
           <TouchableOpacity
             onPress={handlOnClearPress}
-            className="absolute right-3 top-2 rounded-full  bg-orange-400"
+            className="absolute right-3 top-2 rounded-full bg-orange-400"
           >
             <MaterialIcons name="clear" size={20} color="white" />
           </TouchableOpacity>

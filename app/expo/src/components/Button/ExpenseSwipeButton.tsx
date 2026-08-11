@@ -21,7 +21,7 @@ const ExpenseSwipeButton = ({
       </TouchableOpacity>
       <TouchableOpacity
         onPress={onPressDelete}
-        className="absolute bottom-0 right-0 top-0 w-16 items-center justify-center  bg-red-500"
+        className="absolute bottom-0 right-0 top-0 w-16 items-center justify-center bg-red-500"
       >
         {isDeleting ? (
           <ActivityIndicator

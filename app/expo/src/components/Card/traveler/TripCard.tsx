@@ -57,7 +57,7 @@ function TripCard({
     <View className="m-3" testID="trip-card">
       <Link href={`/traveler/trip/itinerary/${id}`}>
         <View
-          className=" rounded-2xl bg-gray-50 shadow-md"
+          className="rounded-2xl bg-gray-50 shadow-md"
           style={{ width: cardWidth }}
         >
           <Image
@@ -72,13 +72,13 @@ function TripCard({
             transition={1_200}
           ></Image>
           <View
-            className=" container absolute h-52 rounded-2xl bg-black opacity-30"
+            className="container absolute h-52 rounded-2xl bg-black opacity-30"
             style={{ width: cardWidth }}
           />
           <TouchableOpacity
             accessibilityRole="button"
             testID="trip-menu-btn"
-            className=" absolute right-3 top-2 p-2"
+            className="absolute right-3 top-2 p-2"
             activeOpacity={0.7}
             onPress={() => {
               setIsModalVisible(true);
@@ -134,21 +134,21 @@ function TripCard({
               {travelSizeIcon[travelSize]}
               <Text
                 testID="trip-travel-size"
-                className="pl-1 text-center font-poppins text-base  text-gray-500"
+                className="pl-1 text-center font-poppins text-base text-gray-500"
               >
                 {`${toSentenceCase(travelSize)} (${totalTravellers}) `}
               </Text>
-              <Text className="pl-2 text-center font-poppins text-base  text-gray-500">
+              <Text className="pl-2 text-center font-poppins text-base text-gray-500">
                 •
               </Text>
             </View>
             <View className="flex-row">
-              <Text className=" text-center font-poppins text-base  text-gray-500">
+              <Text className="text-center font-poppins text-base text-gray-500">
                 ₱
               </Text>
               <Text
                 testID="trip-budget"
-                className="text-center font-poppins text-base  text-gray-500"
+                className="text-center font-poppins text-base text-gray-500"
               >
                 {amountFormatter(budget)}
               </Text>

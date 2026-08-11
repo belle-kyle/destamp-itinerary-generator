@@ -24,7 +24,7 @@ const EditTimeDurationPicker = ({
     <View>
       <View className="rounded-2xl bg-white py-5">
         <View className="flex-row justify-between">
-          <View className=" w-1/2 flex-row  items-center">
+          <View className="w-1/2 flex-row items-center">
             <ScrollPicker
               dataSource={hours}
               selectedIndex={hour}

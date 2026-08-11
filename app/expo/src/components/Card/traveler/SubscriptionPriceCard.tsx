@@ -25,7 +25,7 @@ export default function SubscriptionPriceCard({
         style={{ width: screenWidth }}
       >
         <Text
-          className={` text-base  ${
+          className={`text-base ${
             isSelected ? 'font-poppins-medium text-slate-600' : 'text-gray-500'
           }`}
         >

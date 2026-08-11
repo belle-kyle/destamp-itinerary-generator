@@ -152,7 +152,7 @@ export default function ItineraryScreen() {
         </MapView>
       </View>
       <Stack.Screen options={{ headerShown: false }} />
-      <View className="-mt-7 flex-1 ">
+      <View className="-mt-7 flex-1">
         <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
           <View className="flex-1 items-center rounded-tl-3xl rounded-tr-3xl bg-white p-5">
             <View

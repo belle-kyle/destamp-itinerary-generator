@@ -33,7 +33,7 @@ export default function CategoryListItem({
         {item.icon}
       </View>
       <Text
-        className={`text-xs text-gray-600  ${
+        className={`text-xs text-gray-600 ${
           item.value === selectedCategory ? 'text-[#F78E48]' : ''
         }`}
       >

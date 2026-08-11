@@ -102,7 +102,7 @@ const AccommodationFacilities = () => {
   return (
     <View style={{ alignItems: 'center', backgroundColor: 'white', flex: 1 }}>
       <CreateBusinessHeader title={'Edit Business'} />
-      <SafeAreaView className="flex-1 ">
+      <SafeAreaView className="flex-1">
         <ScrollView>
           <View style={{ marginHorizontal: 40, alignContent: 'center' }}>
             <Question question={'Select Category'} />

@@ -14,7 +14,7 @@ export default function Counter({
   onDecrement,
 }: CounterProps) {
   return (
-    <View className=" mb-2 ml-4 mr-7 mt-1 flex-row items-center justify-between">
+    <View className="mb-2 ml-4 mr-7 mt-1 flex-row items-center justify-between">
       <Text className="text-small font-poppins text-gray-600">{label}</Text>
       <View className="w-[110] flex-row items-center rounded-lg bg-gray-100 px-5">
         <View>
@@ -29,9 +29,7 @@ export default function Counter({
         </Text>
         <View>
           <TouchableOpacity onPress={onIncrement}>
-            <Text className=" ml-12 font-poppins text-2xl text-gray-600">
-              +
-            </Text>
+            <Text className="ml-12 font-poppins text-2xl text-gray-600">+</Text>
           </TouchableOpacity>
         </View>
       </View>

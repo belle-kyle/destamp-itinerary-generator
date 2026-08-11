@@ -129,7 +129,7 @@ const OperatingHourCard = ({
               {operatingHour.dayName}
             </Text>
             {operatingHour.isClosed ? (
-              <Text className=" ml-2 font-poppins text-sm text-gray-700">
+              <Text className="ml-2 font-poppins text-sm text-gray-700">
                 Closed
               </Text>
             ) : operatingHour.is24Hours ? (

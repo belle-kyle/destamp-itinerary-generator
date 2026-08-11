@@ -686,8 +686,8 @@ export type ResolversParentTypes = {
 
 export type AccommodationResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Accommodation'] = ResolversParentTypes['Accommodation'],
+  ParentType extends ResolversParentTypes['Accommodation'] =
+    ResolversParentTypes['Accommodation'],
 > = {
   amenities?: Resolver<
     Array<ResolversTypes['Amenity']>,
@@ -701,8 +701,8 @@ export type AccommodationResolvers<
 
 export type AccountResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Account'] = ResolversParentTypes['Account'],
+  ParentType extends ResolversParentTypes['Account'] =
+    ResolversParentTypes['Account'],
 > = {
   isPremium?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   user?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
@@ -711,23 +711,25 @@ export type AccountResolvers<
 
 export type AmenityResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Amenity'] = ResolversParentTypes['Amenity'],
+  ParentType extends ResolversParentTypes['Amenity'] =
+    ResolversParentTypes['Amenity'],
 > = {
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface BigIntScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['BigInt'], any> {
+export interface BigIntScalarConfig extends GraphQLScalarTypeConfig<
+  ResolversTypes['BigInt'],
+  any
+> {
   name: 'BigInt';
 }
 
 export type CategoryResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Category'] = ResolversParentTypes['Category'],
+  ParentType extends ResolversParentTypes['Category'] =
+    ResolversParentTypes['Category'],
 > = {
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -736,8 +738,8 @@ export type CategoryResolvers<
 
 export type DailyItineraryResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['DailyItinerary'] = ResolversParentTypes['DailyItinerary'],
+  ParentType extends ResolversParentTypes['DailyItinerary'] =
+    ResolversParentTypes['DailyItinerary'],
 > = {
   accommodationCost?: Resolver<
     ResolversTypes['Float'],
@@ -765,8 +767,8 @@ export type DailyItineraryResolvers<
 
 export type DailyItineraryPoiResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['DailyItineraryPoi'] = ResolversParentTypes['DailyItineraryPoi'],
+  ParentType extends ResolversParentTypes['DailyItineraryPoi'] =
+    ResolversParentTypes['DailyItineraryPoi'],
 > = {
   dailyItineraryId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   distance?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
@@ -777,15 +779,17 @@ export type DailyItineraryPoiResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface DateTimeScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['DateTime'], any> {
+export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<
+  ResolversTypes['DateTime'],
+  any
+> {
   name: 'DateTime';
 }
 
 export type ExpenseResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Expense'] = ResolversParentTypes['Expense'],
+  ParentType extends ResolversParentTypes['Expense'] =
+    ResolversParentTypes['Expense'],
 > = {
   amount?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   category?: Resolver<
@@ -803,8 +807,8 @@ export type ExpenseResolvers<
 
 export type ImageResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Image'] = ResolversParentTypes['Image'],
+  ParentType extends ResolversParentTypes['Image'] =
+    ResolversParentTypes['Image'],
 > = {
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -813,15 +817,17 @@ export type ImageResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface JsonScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['JSON'], any> {
+export interface JsonScalarConfig extends GraphQLScalarTypeConfig<
+  ResolversTypes['JSON'],
+  any
+> {
   name: 'JSON';
 }
 
 export type MutationResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
+  ParentType extends ResolversParentTypes['Mutation'] =
+    ResolversParentTypes['Mutation'],
 > = {
   cancelSubscription?: Resolver<
     ResolversTypes['Subscription'],
@@ -914,8 +920,8 @@ export type MutationResolvers<
 
 export type OperatingHourResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['OperatingHour'] = ResolversParentTypes['OperatingHour'],
+  ParentType extends ResolversParentTypes['OperatingHour'] =
+    ResolversParentTypes['OperatingHour'],
 > = {
   closeTime?: Resolver<
     Maybe<ResolversTypes['DateTime']>,
@@ -987,8 +993,8 @@ export type PoiResolvers<
 
 export type PoiImageResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['PoiImage'] = ResolversParentTypes['PoiImage'],
+  ParentType extends ResolversParentTypes['PoiImage'] =
+    ResolversParentTypes['PoiImage'],
 > = {
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   image?: Resolver<ResolversTypes['Image'], ParentType, ContextType>;
@@ -999,8 +1005,8 @@ export type PoiImageResolvers<
 
 export type QueryResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
+  ParentType extends ResolversParentTypes['Query'] =
+    ResolversParentTypes['Query'],
 > = {
   accommodationCategoires?: Resolver<
     Array<ResolversTypes['Category']>,
@@ -1078,8 +1084,8 @@ export type QueryResolvers<
 
 export type RestaurantResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Restaurant'] = ResolversParentTypes['Restaurant'],
+  ParentType extends ResolversParentTypes['Restaurant'] =
+    ResolversParentTypes['Restaurant'],
 > = {
   atmospheres?: Resolver<
     Array<ResolversTypes['String']>,
@@ -1093,8 +1099,8 @@ export type RestaurantResolvers<
 
 export type StampResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Stamp'] = ResolversParentTypes['Stamp'],
+  ParentType extends ResolversParentTypes['Stamp'] =
+    ResolversParentTypes['Stamp'],
 > = {
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -1106,8 +1112,8 @@ export type StampResolvers<
 
 export type SubscriptionResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription'],
+  ParentType extends ResolversParentTypes['Subscription'] =
+    ResolversParentTypes['Subscription'],
 > = {
   amount?: SubscriptionResolver<
     ResolversTypes['Float'],
@@ -1149,8 +1155,8 @@ export type SubscriptionResolvers<
 
 export type TravelerResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Traveler'] = ResolversParentTypes['Traveler'],
+  ParentType extends ResolversParentTypes['Traveler'] =
+    ResolversParentTypes['Traveler'],
 > = {
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -1169,8 +1175,8 @@ export type TravelerResolvers<
 
 export type TripResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['Trip'] = ResolversParentTypes['Trip'],
+  ParentType extends ResolversParentTypes['Trip'] =
+    ResolversParentTypes['Trip'],
 > = {
   budget?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
@@ -1215,8 +1221,8 @@ export type TripResolvers<
 
 export type TripPreferenceResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['TripPreference'] = ResolversParentTypes['TripPreference'],
+  ParentType extends ResolversParentTypes['TripPreference'] =
+    ResolversParentTypes['TripPreference'],
 > = {
   accommodationType?: Resolver<
     ResolversTypes['String'],
@@ -1242,8 +1248,8 @@ export type TripPreferenceResolvers<
 
 export type UserResolvers<
   ContextType = any,
-  ParentType extends
-    ResolversParentTypes['User'] = ResolversParentTypes['User'],
+  ParentType extends ResolversParentTypes['User'] =
+    ResolversParentTypes['User'],
 > = {
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;

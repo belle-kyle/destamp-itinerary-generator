@@ -46,8 +46,8 @@ describe('Login Form', () => {
     await act(async () => {
       const emailInputError = getByTestId('email-input-error');
       const passwordInputError = getByTestId('password-input-error');
-      expect(emailInputError).toBeTruthy;
-      expect(passwordInputError).toBeTruthy;
+      expect(emailInputError).toBeTruthy();
+      expect(passwordInputError).toBeTruthy();
     });
   });
   it('unhides password input when unhide icon is pressed', async () => {

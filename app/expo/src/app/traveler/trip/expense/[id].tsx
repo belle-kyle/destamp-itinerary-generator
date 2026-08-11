@@ -167,8 +167,8 @@ const ExpensePage = () => {
               data && totalSpending
                 ? (data.trip.budget - totalSpending).toFixed(2)
                 : data
-                ? data.trip.budget.toFixed(2)
-                : 0
+                  ? data.trip.budget.toFixed(2)
+                  : 0
             }`}
             backgroundColor={
               data && totalSpending && data.trip.budget - totalSpending < 0

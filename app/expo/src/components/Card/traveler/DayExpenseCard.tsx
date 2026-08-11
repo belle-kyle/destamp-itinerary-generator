@@ -40,7 +40,7 @@ export default function DayExpenseCard({
         <Text className="m-1 font-poppins text-base text-gray-500">
           Day Expenses
         </Text>
-        <View className="absolute left-[190] flex-row items-center ">
+        <View className="absolute left-[190] flex-row items-center">
           <Text className="text-XS m-1 font-poppins-medium text-[#F65A82]">
             TOTAL:{' '}
           </Text>
@@ -79,6 +79,6 @@ export default function DayExpenseCard({
 
 const DayExpenseText = ({ value }: DayExpenseTextProps) => {
   return (
-    <Text className=" mx-1.5 font-poppins text-sm text-gray-500 ">{value}</Text>
+    <Text className="mx-1.5 font-poppins text-sm text-gray-500">{value}</Text>
   );
 };

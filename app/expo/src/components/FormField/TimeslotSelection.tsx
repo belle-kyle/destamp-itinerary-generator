@@ -65,8 +65,8 @@ export default function TimeslotSelection({
           value === 12
             ? `${value}PM`
             : value - 12 == 12
-            ? `${value - 12}AM`
-            : `${value - 12}PM`
+              ? `${value - 12}AM`
+              : `${value - 12}PM`
         }`
       : `${value}AM`;
   };
@@ -85,7 +85,7 @@ export default function TimeslotSelection({
                 index + 1
               }`}</Text>
               <View className="px-.5 w-[100] items-center rounded-lg bg-[#F9EBEE] py-1">
-                <Text className="font-poppins-medium text-xs text-[#FF6E93] ">{`${dayDisplay(
+                <Text className="font-poppins-medium text-xs text-[#FF6E93]">{`${dayDisplay(
                   range[0],
                 )} - ${dayDisplay(range[1])}`}</Text>
               </View>

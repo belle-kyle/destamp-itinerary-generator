@@ -84,7 +84,7 @@ function BusinessCard({
           <TouchableOpacity
             accessibilityRole="button"
             testID="business-menu-btn"
-            className=" absolute right-3 top-2 p-2"
+            className="absolute right-3 top-2 p-2"
             activeOpacity={0.7}
             onPress={businessIsVerified ? onModalOpen : handleNonVerifiedModal}
           >

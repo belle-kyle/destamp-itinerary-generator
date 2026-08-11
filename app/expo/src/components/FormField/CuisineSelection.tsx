@@ -37,7 +37,7 @@ export default function CuisineSelection({
   };
 
   return (
-    <View className=" w-[330] ">
+    <View className="w-[330]">
       <View className="flex-row flex-wrap">
         {data.map((cuisine, i) => (
           <View className="mx-1.5 my-1 flex-row justify-between" key={i}>

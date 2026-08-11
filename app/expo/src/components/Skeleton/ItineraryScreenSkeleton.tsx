@@ -28,7 +28,7 @@ const ItineraryScreenSkeleton = () => {
       </SafeAreaView>
       <Stack.Screen options={{ headerShown: false }} />
       <SafeAreaView
-        className="relative mt-36  flex-1"
+        className="relative mt-36 flex-1"
         edges={['left', 'right']}
       ></SafeAreaView>
       <View

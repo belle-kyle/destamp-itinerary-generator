@@ -62,7 +62,7 @@ export default function DestinationDetailScreen() {
             className="mx-1 my-0.5 flex-row rounded-lg bg-pink-100 p-1"
             key={i}
           >
-            <Text className="font-poppins-medium text-[10px] text-pink-600 ">
+            <Text className="font-poppins-medium text-[10px] text-pink-600">
               {item.name}
             </Text>
           </View>
@@ -140,7 +140,7 @@ export default function DestinationDetailScreen() {
             </View>
             {data.poi.restaurant ? (
               <View
-                className="mt-3 self-center rounded-2xl bg-gray-100 p-2 "
+                className="mt-3 self-center rounded-2xl bg-gray-100 p-2"
                 style={{ width: screenWidth / 1.13 }}
               >
                 <View
@@ -156,7 +156,7 @@ export default function DestinationDetailScreen() {
                     {data.poi.restaurant.atmospheres.map(
                       (atmosphere, index) => (
                         <View
-                          className="mr-1.5  rounded-xl border border-pink-600 px-2 py-1"
+                          className="mr-1.5 rounded-xl border border-pink-600 px-2 py-1"
                           key={index}
                         >
                           <Text className="font-poppins text-[9px] text-pink-600">
@@ -214,10 +214,10 @@ export default function DestinationDetailScreen() {
                   data.poi.operatingHours.map((oh, index) => (
                     <View key={index} className="mx-3 flex-row">
                       <Text
-                        className={` w-16 font-poppins-medium ${
+                        className={`w-16 font-poppins-medium ${
                           oh.day === new Date().getDay()
                             ? 'text-[18px] text-orange-500'
-                            : ' text-base text-gray-500'
+                            : 'text-base text-gray-500'
                         }`}
                       >
                         {days[oh.day as DayValue]}
@@ -232,11 +232,11 @@ export default function DestinationDetailScreen() {
                         </Text>
                       ) : (
                         <Text
-                          className={`pl-2  ${
+                          className={`pl-2 ${
                             oh.day === new Date().getDay()
                               ? 'font-poppins-medium text-[18px] text-orange-500'
                               : 'font-poppins text-base text-gray-500'
-                          }  `}
+                          } `}
                         >
                           {oh.openTime ? formatTime(new Date(oh.openTime)) : ''}{' '}
                           -{' '}
@@ -260,7 +260,7 @@ export default function DestinationDetailScreen() {
             )}
             {data.poi.accommodation ? (
               <View
-                className="mt-3 self-center rounded-2xl bg-gray-100 p-2 "
+                className="mt-3 self-center rounded-2xl bg-gray-100 p-2"
                 style={{ width: screenWidth / 1.13 }}
               >
                 <View

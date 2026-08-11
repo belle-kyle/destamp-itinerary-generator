@@ -69,7 +69,7 @@ export default function MyTripEmptyState() {
         </LinearGradient>
       </TouchableOpacity>
       <FancyModal isVisible={showPremiummodal} bgColor="#DCDCDC">
-        <View className="items-center ">
+        <View className="items-center">
           <AntDesign
             name="closecircleo"
             size={22}
