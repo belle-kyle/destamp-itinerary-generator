@@ -16,7 +16,10 @@
     "type-check": "tsc --noEmit",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "generate": "graphql-codegen --config codegen.ts"
+    "generate": "graphql-codegen --config codegen.ts",
+    "web:build": "expo export --platform web",
+    "web:serve": "node serve-web.mjs",
+    "web:preview": "expo export --platform web && node serve-web.mjs"
   },
   "dependencies": {
     "@apollo/client": "^3.14.1",

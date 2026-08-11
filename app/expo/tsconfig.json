@@ -26,8 +26,6 @@
     "*.ts",
     "index.tsx",
     "*.js",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts",
     "jest.config.js",
     "nativewind-env.d.ts"
   ],
