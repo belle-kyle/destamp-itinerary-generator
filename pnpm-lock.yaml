@@ -230,6 +230,9 @@ importers:
       react-native-otp-textinput:
         specifier: ^1.1.7
         version: 1.1.7(react-native@0.86.2)(react@19.2.3)
+      react-native-reanimated:
+        specifier: ^4.5.3
+        version: 4.5.3(react-native-worklets@0.11.3)(react-native@0.86.2)(react@19.2.3)
       react-native-safe-area-context:
         specifier: ~5.7.0
         version: 5.7.0(react-native@0.86.2)(react@19.2.3)
@@ -263,6 +266,9 @@ importers:
       react-native-wheel-scrollview-picker:
         specifier: ^2.0.9
         version: 2.0.9(@types/react-native@0.72.8)(@types/react@19.2.0)(react-native@0.86.2)(react@19.2.3)(typescript@5.9.3)
+      react-native-worklets:
+        specifier: ^0.11.1
+        version: 0.11.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.2)(react-native@0.86.2)(react@19.2.3)
       react-test-renderer:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)

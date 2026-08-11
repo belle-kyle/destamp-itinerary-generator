@@ -71,7 +71,9 @@ const defineConfig = (): ExpoConfig => ({
   },
   experiments: {
     tsconfigPaths: true,
-    typedRoutes: true,
+    // App predates expo-router typed routes (uses template-string Hrefs);
+    // revisit adopting typed routes + object Hrefs as a separate task.
+    typedRoutes: false,
   },
   web: {
     bundler: 'metro',
