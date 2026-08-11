@@ -11,8 +11,8 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { ClerkProvider } from '@clerk/clerk-expo';
-import { tokenCache } from '@clerk/clerk-expo/token-cache';
+import { ClerkProvider } from '@clerk/expo';
+import { tokenCache } from '@clerk/expo/token-cache';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { supabase } from 'config/initSupabase';
 import { fetch } from 'cross-fetch';

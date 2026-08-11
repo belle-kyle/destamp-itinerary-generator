@@ -1,7 +1,7 @@
 import { useContext, type ReactNode } from 'react';
 import { Alert, FlatList } from 'react-native';
 import { router } from 'expo-router';
-import { useAuth } from '@clerk/clerk-expo';
+import { useAuth } from '@clerk/expo';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { supabase } from 'config/initSupabase';
 

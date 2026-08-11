@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
 import { router } from 'expo-router';
-import { useSignUp } from '@clerk/clerk-expo';
+import { useSignUp } from '@clerk/expo';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
