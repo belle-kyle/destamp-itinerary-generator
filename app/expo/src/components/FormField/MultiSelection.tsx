@@ -45,7 +45,7 @@ export default function MultiSelection({
       }}
       badgeStyles={{ backgroundColor: '#F9E3E8' }}
       labelStyles={{ color: '#DE4D6C', fontSize: 16 }}
-      badgeTextStyles={{ color: '#DE4D6C' }}
+      badgeTextStyles={{ color: '#DE4D6C' } as import('react-native').ViewStyle}
       placeholder={`Select ${placeholder}`}
       searchPlaceholder={`Select ${placeholder}`}
     />

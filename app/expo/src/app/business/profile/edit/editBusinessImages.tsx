@@ -196,7 +196,7 @@ const BusinessPhotos: React.FC = () => {
                 activeOpacity={0.9}
               >
                 <View className="rounded-full bg-orange-500 p-0.5">
-                  <Ionicons name="ios-close" size={22} color="white" />
+                  <Ionicons name="close" size={22} color="white" />
                 </View>
               </TouchableOpacity>
             </TouchableOpacity>

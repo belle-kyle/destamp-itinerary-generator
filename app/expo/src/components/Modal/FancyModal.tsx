@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 interface FancyModalProps {
   isVisible: boolean;
-  children: string | JSX.Element | JSX.Element[];
+  children: string | React.JSX.Element | React.JSX.Element[];
   bgColor?: string;
 }
 

@@ -8,7 +8,7 @@ const SearchBar = ({ searchTitle }: { searchTitle: string }) => {
   return (
     <View style={[styles.container, { width: screenWidth * 0.85 }]}>
       <View style={styles.row}>
-        <AntDesign name="search1" size={24} color="#ECB476" margin={5} />
+        <AntDesign name="search" size={24} color="#ECB476" margin={5} />
         <TextInput style={styles.searchTitle}>{searchTitle}</TextInput>
       </View>
     </View>

@@ -1,8 +1,9 @@
+import { type ColorValue } from 'react-native';
 import SimpleLineIcon from '@expo/vector-icons/SimpleLineIcons';
 
 interface TabBarIconProps {
   name: React.ComponentProps<typeof SimpleLineIcon>['name'];
-  color: string;
+  color: ColorValue;
   size: number;
 }
 

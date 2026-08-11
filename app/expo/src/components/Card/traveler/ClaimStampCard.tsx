@@ -142,7 +142,7 @@ function ClaimStampCard({ id, url, title }: ClaimStampCardProps) {
       </View>
       <FancyModal isVisible={isVisible}>
         <AntDesign
-          name="closecircleo"
+          name="close-circle"
           size={24}
           color="#A29E9E"
           style={{ alignSelf: 'flex-end' }}

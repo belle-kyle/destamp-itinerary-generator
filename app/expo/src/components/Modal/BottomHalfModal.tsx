@@ -3,7 +3,7 @@ import Modal from 'react-native-modal';
 
 interface BottomHalfModalProps {
   isVisible: boolean;
-  children: string | JSX.Element | JSX.Element[];
+  children: string | React.JSX.Element | React.JSX.Element[];
   onClose: () => void;
 }
 

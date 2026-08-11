@@ -3,11 +3,22 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ],
+      "react-model": [
+        "./src/types/react-model.d.ts"
+      ],
+      "react-native-wheel-scrollview-picker": [
+        "./src/types/wheel-scrollview-picker.d.ts"
+      ]
     },
     "jsx": "react-native",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-    "types": ["nativewind/types", "jest"]
+    "types": [
+      "nativewind/types",
+      "jest"
+    ]
   },
   "include": [
     "expo-plugins",
@@ -17,7 +28,10 @@
     "*.js",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "jest.config.js"
+    "jest.config.js",
+    "nativewind-env.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -148,7 +148,7 @@ const ProfileDescription = ({
         style={{ width: screenWidth * 0.8 }}
       >
         <Ionicons
-          name="md-location-outline"
+          name="location-outline"
           size={16}
           color="#676464"
           style={{ marginLeft: -3, alignSelf: 'baseline' }}
@@ -172,7 +172,7 @@ const ProfileDescription = ({
       </View>
       {businessContactNumber ? (
         <View className="flex-row items-center">
-          <Ionicons name="ios-call-outline" size={15} color="#676464" />
+          <Ionicons name="call-outline" size={15} color="#676464" />
           <Text className="ml-1 font-poppins text-base text-gray-500">
             {businessContactNumber}
           </Text>

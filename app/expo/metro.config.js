@@ -1,5 +1,6 @@
 // @ts-nocheck
 const { getDefaultConfig } = require('expo/metro-config');
+const { withNativeWind } = require('nativewind/metro');
 const path = require('path');
 
 module.exports = (async () => {
@@ -33,5 +34,5 @@ module.exports = (async () => {
     config.resolver.disableHierarchicalLookup = true;
   }
 
-  return config;
+  return withNativeWind(config, { input: './global.css' });
 })();

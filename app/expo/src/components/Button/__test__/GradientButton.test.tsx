@@ -63,7 +63,9 @@ describe('Gradient Button', () => {
 
       const gradientBtnElement = getByTestId('gradient-btn-color');
 
-      expect(gradientBtnElement.props.style[4].opacity).toBe(0.4);
+      // nativewind 4 resolves className at runtime (metro css pipeline), which
+      // jest does not run — assert the class application, not the computed style.
+      expect(gradientBtnElement.props.className).toContain('opacity-40');
     });
   });
 });

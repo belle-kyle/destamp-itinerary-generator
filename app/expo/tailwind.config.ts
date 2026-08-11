@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import nativewind from 'nativewind/preset';
 import type { Config } from 'tailwindcss';
 
 import baseConfig from '@destamp/tailwind-config';
 
 export default {
   content: ['./src/**/*.{ts,tsx}'],
-  presets: [baseConfig],
+  presets: [nativewind, baseConfig],
 } satisfies Config;

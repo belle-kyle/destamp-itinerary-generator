@@ -5,14 +5,18 @@ import AbsoluteButton from '../AbsoluteButton';
 
 describe('Absolute Button', () => {
   it('should render successfully', () => {
-    const { getByRole } = render(<AbsoluteButton title="+" />);
+    const { getByRole } = render(
+      <AbsoluteButton title="+" onPress={() => {}} />,
+    );
     const absoluteBtnElement = getByRole('button');
 
     expect(absoluteBtnElement).toBeDefined();
   });
 
   it('should render correct output text', () => {
-    const { getByRole, getByTestId } = render(<AbsoluteButton title="+" />);
+    const { getByRole, getByTestId } = render(
+      <AbsoluteButton title="+" onPress={() => {}} />,
+    );
     const absoluteBtnElement = getByRole('button', { name: '+' });
     const absoluteBtnTextElement = getByTestId('absolute-btn-text');
 

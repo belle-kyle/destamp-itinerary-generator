@@ -11,7 +11,7 @@ interface CustomContainerProps extends TextInputProps {
   errorMessage?: string;
   errorWidth?: number;
   width?: number;
-  prefix?: string | JSX.Element | JSX.Element[];
+  prefix?: string | React.JSX.Element | React.JSX.Element[];
 }
 
 const CustomContainer: React.FC<CustomContainerProps> = ({

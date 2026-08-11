@@ -203,7 +203,6 @@ export default function ReviewTripScreen() {
           <Stack.Screen
             options={{
               title: ' Review Trip',
-              headerBackTitleVisible: false,
               headerTitleStyle: {
                 color: '#504D4D',
                 fontSize: 21,

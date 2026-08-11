@@ -153,7 +153,7 @@ export default function MyTrip() {
       <FancyModal isVisible={showPremiummodal} bgColor="#DCDCDC">
         <View className="items-center">
           <AntDesign
-            name="closecircleo"
+            name="close-circle"
             size={22}
             color="#263238"
             style={{ alignSelf: 'flex-end', marginRight: 7 }}

@@ -122,7 +122,7 @@ function BusinessCard({
       <FancyModal isVisible={isPendingStatusModalVisible} bgColor="#DCDCDC">
         <View className="items-center p-2">
           <AntDesign
-            name="closecircleo"
+            name="close-circle"
             size={22}
             color="gray"
             style={{ alignSelf: 'flex-end' }}

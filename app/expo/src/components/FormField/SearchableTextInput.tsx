@@ -80,7 +80,7 @@ const SearchableTextInput = ({
         className="h-12 flex-row items-center justify-center rounded-xl bg-gray-100 p-2"
         style={{ width: inputWidth }}
       >
-        <AntDesign name="search1" size={20} color="#808080" />
+        <AntDesign name="search" size={20} color="#808080" />
         <TextInput
           onChangeText={(text) => searchFilterFunction(text)}
           placeholder={search ? selectedValue : placeholder}

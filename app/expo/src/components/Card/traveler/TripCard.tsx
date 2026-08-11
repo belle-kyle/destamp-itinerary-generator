@@ -162,7 +162,7 @@ function TripCard({
 
 const travelSizeIcon: Record<string, ReactNode> = {
   SOLO: <AntDesign name="user" size={15} color={'#808080'} />,
-  COUPLE: <AntDesign name="hearto" size={15} color={'#808080'} />,
+  COUPLE: <AntDesign name="heart" size={15} color={'#808080'} />,
   FAMILY: <AntDesign name="home" size={15} color={'#808080'} />,
   GROUP: <AntDesign name="team" size={15} color={'#808080'} />,
 };

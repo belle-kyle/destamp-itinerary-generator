@@ -74,11 +74,7 @@ const OverviewPage = () => {
                   <OverviewTag
                     content={'Operating Hours'}
                     icon={
-                      <Ionicons
-                        name="ios-time-outline"
-                        size={24}
-                        color="white"
-                      />
+                      <Ionicons name="time-outline" size={24} color="white" />
                     }
                   />
                   <OverviewTag
@@ -129,9 +125,7 @@ const OverviewPage = () => {
               <View style={{ flexDirection: 'row' }}>
                 <OverviewTag
                   content={'Business Permit'}
-                  icon={
-                    <Ionicons name="ios-documents" size={24} color="white" />
-                  }
+                  icon={<Ionicons name="documents" size={24} color="white" />}
                 />
                 <OverviewTag
                   content={'Business Photos'}

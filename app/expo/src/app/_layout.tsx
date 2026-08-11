@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { AutocompleteDropdownContextProvider } from 'react-native-autocomplete-dropdown';
 import Constants from 'expo-constants';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import {
   ApolloClient,
   ApolloProvider,
@@ -11,12 +12,14 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { ClerkProvider } from '@clerk/clerk-expo';
+import { tokenCache } from '@clerk/clerk-expo/token-cache';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { supabase } from 'config/initSupabase';
 import { fetch } from 'cross-fetch';
 
 import { AuthProvider } from '~/context/AuthProvider';
+
+import '../../global.css';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -85,34 +88,33 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <ThemeProvider value={DefaultTheme}>
-      <AutocompleteDropdownContextProvider>
-        <AuthProvider>
-          <ClerkProvider
-            publishableKey={
-              Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY as string
-            }
-          >
-            <ApolloProvider client={client}>
-              <Stack>
-                <Stack.Screen
-                  name="business/(tabs)"
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <Stack.Screen
-                  name="traveler/(tabs)"
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-              </Stack>
-            </ApolloProvider>
-          </ClerkProvider>
-        </AuthProvider>
-      </AutocompleteDropdownContextProvider>
-    </ThemeProvider>
+    <AutocompleteDropdownContextProvider>
+      <AuthProvider>
+        <ClerkProvider
+          tokenCache={tokenCache}
+          publishableKey={
+            Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY as string
+          }
+        >
+          <ApolloProvider client={client}>
+            <Stack>
+              <Stack.Screen
+                name="business/(tabs)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="traveler/(tabs)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+            </Stack>
+          </ApolloProvider>
+        </ClerkProvider>
+      </AuthProvider>
+    </AutocompleteDropdownContextProvider>
   );
 }
 
