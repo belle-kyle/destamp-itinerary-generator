@@ -1,11 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import Modal from 'react-native-modal';
 
 interface RightSlideModalProps {
   isVisible: boolean;
   children: string | React.JSX.Element | React.JSX.Element[];
-
   onClose: () => void;
 }
 
@@ -14,42 +12,42 @@ function RightSlideModal({
   children,
   onClose,
 }: RightSlideModalProps) {
+  if (!isVisible) return null;
+
   return (
-    <Modal
+    <View
       testID="modal"
-      isVisible={isVisible}
-      onBackdropPress={onClose}
-      swipeDirection={'right'}
-      onSwipeComplete={onClose}
-      animationIn="slideInRight"
-      animationOut="slideOutRight"
-      animationInTiming={600}
-      animationOutTiming={600}
-      backdropTransitionInTiming={700}
-      backdropTransitionOutTiming={700}
-      className="-mx-0"
+      onStartShouldSetResponder={() => {
+        onClose();
+        return true;
+      }}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+      }}
     >
       <View
+        onStartShouldSetResponder={() => true}
+        testID="modal-menus"
         style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: 300,
+          height: 400,
+          backgroundColor: 'white',
+          borderRadius: 16,
+          padding: 20,
         }}
+        className="-mx-0"
       >
-        <View
-          testID="modal-menus"
-          style={{
-            width: 300,
-            height: 400,
-            backgroundColor: 'white',
-            borderRadius: 16,
-            padding: 20,
-          }}
-        >
-          {children}
-        </View>
+        {children}
       </View>
-    </Modal>
+    </View>
   );
 }
 

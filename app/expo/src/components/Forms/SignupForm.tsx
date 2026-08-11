@@ -51,11 +51,15 @@ export default function SignUpForm() {
   });
 
   const onSubmit: SubmitHandler<SignUpSchema> = async (input) => {
-    setIsSubmitting(true);
-
     if (!isLoaded) {
+      Alert.alert(
+        'Still loading',
+        'Authentication is still initializing. Please wait a moment and try again.',
+      );
       return;
     }
+    setIsSubmitting(true);
+
     try {
       await signUp.create({
         emailAddress: input.email,
@@ -67,9 +71,11 @@ export default function SignUpForm() {
       setPendingVerification(true);
     } catch (err) {
       const error = err as ErrorJson;
-      if (error.errors.length > 0) {
-        Alert.alert('Error signing up', error.errors[0]!.message);
-      }
+      const message =
+        error?.errors?.[0]?.message ||
+        error?.errors?.[0]?.longMessage ||
+        'Unknown error';
+      Alert.alert('Error signing up', message);
       setIsSubmitting(false);
     }
   };
