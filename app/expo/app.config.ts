@@ -7,6 +7,8 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY;
 const CLERK_PUBLISHABLE_KEY = process.env.CLERK_PUBLISHABLE_KEY;
+const EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY =
+  process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 if (typeof SUPABASE_URL !== 'string' || typeof SUPABASE_ANON_KEY !== 'string') {
@@ -67,6 +69,7 @@ const defineConfig = (): ExpoConfig => ({
     SUPABASE_ANON_KEY,
     MAPBOX_API_KEY,
     CLERK_PUBLISHABLE_KEY,
+    EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY,
     GOOGLE_MAPS_API_KEY,
   },
   experiments: {

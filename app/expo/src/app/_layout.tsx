@@ -93,7 +93,9 @@ function RootLayoutNav() {
         <ClerkProvider
           tokenCache={tokenCache}
           publishableKey={
-            Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY as string
+            (process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+              Constants.expoConfig?.extra?.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+              Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY) as string
           }
         >
           <ApolloProvider client={client}>
