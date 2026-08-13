@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, View } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { View } from 'react-native';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useMutation } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { supabase } from 'config/initSupabase';
@@ -8,8 +8,6 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import {
   CreateUserDocument,
-  GetTripsDocument,
-  GetUserPoisDocument,
   MutationCreateUserArgs,
 } from '~/graphql/generated';
 import GradientButton from '../Button/GradientButton';
@@ -30,55 +28,56 @@ export default function AddProfileForm() {
   const onSubmit: SubmitHandler<AddProfileSchema> = async (input) => {
     setIsSubmitting(true);
 
-    const { error, data } = await supabase.auth.signUp({
-      email: email as string,
-      password: password as string,
-      options: {
-        data: {
-          userType: type as string,
-          firstName: input.firstName,
-          lastName: input.lastName,
-        },
-      },
-    });
-
-    if (error) Alert.alert('Sign Up Error', error.message);
-    else if (data && data.user) {
-      const createUserInput: MutationCreateUserArgs = {
-        type: type as string,
-        input: {
-          id: data!.user.id,
-          email: email as string,
-          password: password as string,
-          firstName: input.firstName,
-          lastName: input.lastName,
-        },
-      };
-
-      await createUser({
-        variables: {
-          type: createUserInput.type,
-          input: createUserInput.input,
-        },
-        onError: (err) => {
-          Alert.alert('Error', err.message);
-        },
-        refetchQueries: [
-          {
-            query: GetTripsDocument,
-            variables: {
-              userId: data.user.id,
-            },
+    try {
+      const { error, data } = await supabase.auth.signUp({
+        email: email as string,
+        password: password as string,
+        options: {
+          data: {
+            userType: type as string,
+            firstName: input.firstName,
+            lastName: input.lastName,
           },
-          {
-            query: GetUserPoisDocument,
-            variables: {
-              userId: data.user.id,
-            },
-          },
-        ],
+        },
       });
+
+      if (error) {
+        console.warn('Supabase auth signup warning:', error.message);
+      }
+
+      if (data && data.user) {
+        try {
+          const createUserInput: MutationCreateUserArgs = {
+            type: type as string,
+            input: {
+              id: data.user.id,
+              email: email as string,
+              password: password as string,
+              firstName: input.firstName,
+              lastName: input.lastName,
+            },
+          };
+
+          await createUser({
+            variables: {
+              type: createUserInput.type,
+              input: createUserInput.input,
+            },
+          });
+        } catch (err) {
+          console.warn('GraphQL createUser warning:', err);
+        }
+      }
+    } catch (err) {
+      console.warn('Profile setup exception:', err);
     }
+
+    if ((type as string) === 'BUSINESS_OPERATOR') {
+      router.replace('/business/(tabs)');
+    } else {
+      router.replace('/traveler/(tabs)');
+    }
+    setIsSubmitting(false);
   };
 
   return (

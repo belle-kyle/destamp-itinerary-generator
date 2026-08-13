@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, ScrollView, ToastAndroid, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -14,6 +14,7 @@ import {
   OperatingHour,
   OperatingHoursInput,
 } from '~/graphql/generated';
+import { toast } from '~/utils/toast';
 
 const BusinessOpeningHours: React.FC = () => {
   const { poiId, placeType, imageList } = useLocalSearchParams();
@@ -72,7 +73,7 @@ const BusinessOpeningHours: React.FC = () => {
             },
           });
           setIsSubmitting(false);
-          ToastAndroid.show('Successfully edited.', 2000);
+          toast('Successfully edited.');
         }, 5000);
       },
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Text, ToastAndroid, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMutation, useQuery } from '@apollo/client';
@@ -21,6 +21,7 @@ import {
   GetBusinessDetailsDocument,
   GetPoiFacilitiesDocument,
 } from '~/graphql/generated';
+import { toast } from '~/utils/toast';
 
 const RestaurantFacilities = () => {
   const { poiId, placeType, imageList } = useLocalSearchParams();
@@ -99,7 +100,7 @@ const RestaurantFacilities = () => {
             },
           });
           setIsSubmitting(false);
-          ToastAndroid.show('Successfully edited.', 2000);
+          toast('Successfully edited.');
         }, 5000);
       },
       onError: (err) => {

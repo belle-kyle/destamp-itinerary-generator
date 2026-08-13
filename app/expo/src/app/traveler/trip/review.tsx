@@ -6,7 +6,6 @@ import {
   ScrollView,
   Text,
   TextInput,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -27,6 +26,7 @@ import {
 } from '~/graphql/generated';
 import useFormstore from '~/store/useFormStore';
 import userStore from '~/store/userStore';
+import { toast } from '~/utils/toast';
 import {
   amountFormatter,
   dateFormmater,
@@ -165,10 +165,7 @@ export default function ReviewTripScreen() {
         },
         onCompleted: () => {
           setIsSubmitting(false);
-          ToastAndroid.show(
-            'Itinerary generated successfully',
-            ToastAndroid.SHORT,
-          );
+          toast('Itinerary generated successfully');
           router.push('/traveler/(tabs)');
           reset();
         },
@@ -183,7 +180,7 @@ export default function ReviewTripScreen() {
         onError: (err) => {
           Alert.alert('Error', err.message);
           console.log('Error', err.message);
-          ToastAndroid.show('Failed to generate itinerary', ToastAndroid.SHORT);
+          toast('Failed to generate itinerary');
           setIsSubmitting(false);
         },
       });

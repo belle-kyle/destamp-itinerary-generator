@@ -1,11 +1,12 @@
 import { useContext, type ReactNode } from 'react';
-import { FlatList, ToastAndroid } from 'react-native';
+import { FlatList } from 'react-native';
 import { router } from 'expo-router';
 import { useMutation } from '@apollo/client';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 import { AuthContext } from '~/context/AuthProvider';
 import { DeletePoiDocument, GetUserPoisDocument } from '~/graphql/generated';
+import { toast } from '~/utils/toast';
 import { confirmationAlert } from '~/utils/utils';
 import BusinessMenuItem from './BusinessMenuItem';
 
@@ -56,7 +57,7 @@ function BusinessMenuList({
         },
       ],
       onCompleted: () => {
-        ToastAndroid.show('Business deleted.', ToastAndroid.SHORT);
+        toast('Business deleted.');
       },
       onError: (error) => {
         console.log('Error', error.message);

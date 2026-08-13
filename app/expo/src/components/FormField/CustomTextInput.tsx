@@ -12,6 +12,7 @@ interface CustomTextInputProps extends TextInputProps {
 
 export const CustomTextInput = ({
   errorMessage,
+  value,
   ...textInputProps
 }: CustomTextInputProps) => {
   const inputWidth = Dimensions.get('window').width * 0.86;
@@ -21,10 +22,12 @@ export const CustomTextInput = ({
       <TextInput
         autoCorrect={false}
         autoCapitalize="none"
+        value={value ?? ''}
         {...textInputProps}
         className="h-14 rounded-2xl border-2 border-orange-500 px-6 font-poppins"
         style={{ width: inputWidth }}
       />
+
       {!!errorMessage && (
         <Text
           testID={textInputProps.testID + '-error'}

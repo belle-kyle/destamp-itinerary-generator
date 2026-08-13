@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
 import { router } from 'expo-router';
 import { useSignUp } from '@clerk/expo';
@@ -40,6 +40,7 @@ export default function SignUpForm() {
   const [verifying, setVerifying] = useState(false);
 
   const [userType, setUserType] = useState<string>('TRAVELER');
+  const [clerkError, setClerkError] = useState<string | null>(null);
 
   const handleUserTypeChange = (value: string) => {
     setUserType(value);
@@ -47,15 +48,24 @@ export default function SignUpForm() {
 
   const { handleSubmit, control } = useForm<SignUpSchema>({
     mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
     resolver: zodResolver(signUpSchema),
   });
 
   const onSubmit: SubmitHandler<SignUpSchema> = async (input) => {
+    setClerkError(null);
     if (!isLoaded) {
-      Alert.alert(
-        'Still loading',
+      setClerkError(
         'Authentication is still initializing. Please wait a moment and try again.',
       );
+      return;
+    }
+    if (!signUp) {
+      setClerkError('Authentication is not available. Please reload the page.');
       return;
     }
     setIsSubmitting(true);
@@ -74,46 +84,49 @@ export default function SignUpForm() {
       const message =
         error?.errors?.[0]?.message ||
         error?.errors?.[0]?.longMessage ||
-        'Unknown error';
-      Alert.alert('Error signing up', message);
+        'Unknown sign-up error';
+      setClerkError(message);
+      console.warn('Clerk signup error:', err);
+    } finally {
       setIsSubmitting(false);
     }
   };
 
   const onPressVerify: SubmitHandler<SignUpSchema> = async (input) => {
+    setClerkError(null);
     setVerifying(true);
-    if (!isLoaded) {
-      return;
-    }
 
     try {
+      if (!signUp) {
+        throw new Error('Authentication is not available.');
+      }
       const completeSignUp = await signUp.attemptEmailAddressVerification({
         code,
       });
 
-      await setActive({ session: completeSignUp.createdSessionId });
-      setIsSubmitting(false);
-      setPendingVerification(false);
-
       if (completeSignUp && completeSignUp.createdSessionId) {
-        router.push({
-          pathname: '/(auth)/profile',
-          params: {
-            email: input.email,
-            password: input.password,
-            type: userType,
-          },
-        });
+        await setActive({ session: completeSignUp.createdSessionId });
       }
+
+      router.push({
+        pathname: '/(auth)/profile',
+        params: {
+          email: input.email,
+          password: input.password,
+          type: userType,
+        },
+      });
     } catch (err) {
       const error = err as ErrorJson;
-      if (error.errors.length > 0) {
-        Alert.alert('Email verification error', error.errors[0]!.longMessage);
-        console.log(JSON.stringify(err, null, 2));
-      }
+      const message =
+        error?.errors?.[0]?.message ||
+        error?.errors?.[0]?.longMessage ||
+        'Invalid or expired code';
+      setClerkError(message);
+      console.warn('Email verification error:', err);
+    } finally {
+      setVerifying(false);
     }
-    setIsSubmitting(false);
-    setVerifying(false);
   };
 
   return (
@@ -222,6 +235,13 @@ export default function SignUpForm() {
           isSubmitting={isSubmitting}
         />
       </View>
+      {clerkError ? (
+        <View className="mb-4 w-[350] rounded-lg bg-red-50 px-3 py-2">
+          <Text className="text-center font-poppins text-sm text-red-600">
+            {clerkError}
+          </Text>
+        </View>
+      ) : null}
       <BottomHalfModal
         isVisible={pendingVerification}
         onClose={() => {

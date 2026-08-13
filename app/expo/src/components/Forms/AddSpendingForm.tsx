@@ -5,7 +5,6 @@ import {
   Pressable,
   Text,
   TextInput,
-  ToastAndroid,
   View,
 } from 'react-native';
 import { useMutation } from '@apollo/client';
@@ -22,6 +21,7 @@ import {
   GetTripExpensesDocument,
   MutationCreateExpenseArgs,
 } from '~/graphql/generated';
+import { toast } from '~/utils/toast';
 import GradientButton from '../Button/GradientButton';
 import { CustomTextInput } from '../FormField/CustomTextInput';
 import {
@@ -122,7 +122,7 @@ export default function AddSpendingForm({
     });
     closeModal();
     setTimeout(() => setIsSubmitting(false), 500);
-    ToastAndroid.show('Expense added.', ToastAndroid.SHORT);
+    toast('Expense added.');
   };
 
   return (

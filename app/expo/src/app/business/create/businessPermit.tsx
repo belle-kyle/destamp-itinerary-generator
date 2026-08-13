@@ -4,7 +4,6 @@ import {
   Image,
   StyleSheet,
   Text,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -26,6 +25,7 @@ import {
   MutationCreatePoiArgs,
 } from '~/graphql/generated';
 import addBusinessFormStore from '~/store/addBusinessFormStore';
+import { toast } from '~/utils/toast';
 
 const MAX_IMAGES = 1;
 
@@ -183,10 +183,7 @@ const BusinessVerificationScreen: React.FC = () => {
       onError: (err) => {
         Alert.alert('Error', err.message);
         console.log('Error', err.message);
-        ToastAndroid.show(
-          'Failed to create business profile.',
-          ToastAndroid.SHORT,
-        );
+        toast('Failed to create business profile.');
         setIsSubmitting(false);
       },
       refetchQueries: [

@@ -6,6 +6,7 @@ import type { Config } from 'tailwindcss';
 import baseConfig from '@destamp/tailwind-config';
 
 export default {
+  darkMode: 'class',
   content: ['./src/**/*.{ts,tsx}'],
   presets: [nativewind, baseConfig],
 } satisfies Config;

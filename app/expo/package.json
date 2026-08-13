@@ -18,8 +18,8 @@
     "ios": "expo run:ios",
     "generate": "graphql-codegen --config codegen.ts",
     "web:build": "expo export --platform web",
-    "web:serve": "node serve-web.mjs",
-    "web:preview": "expo export --platform web && node serve-web.mjs"
+    "web:serve": "python serve-web.py",
+    "web:preview": "expo export --platform web && python serve-web.py"
   },
   "dependencies": {
     "@apollo/client": "^3.14.1",

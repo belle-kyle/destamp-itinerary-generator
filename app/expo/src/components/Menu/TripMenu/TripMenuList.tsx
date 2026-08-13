@@ -1,5 +1,5 @@
 import { useContext, type ReactNode } from 'react';
-import { FlatList, ToastAndroid } from 'react-native';
+import { FlatList } from 'react-native';
 import { router } from 'expo-router';
 import { useMutation } from '@apollo/client';
 import { AntDesign, Feather, FontAwesome5, Ionicons } from '@expo/vector-icons';
@@ -11,6 +11,7 @@ import {
   GetTripsDocument,
   RegenerateTripDocument,
 } from '~/graphql/generated';
+import { toast } from '~/utils/toast';
 import { confirmationAlert } from '~/utils/utils';
 import TripMenuItem from './TripMenuItem';
 
@@ -64,11 +65,11 @@ function TripMenuList({
       onError: (error) => {
         console.log('Error', error);
         setDeleting(false);
-        ToastAndroid.show('Failed to delete trip', ToastAndroid.SHORT);
+        toast('Failed to delete trip');
       },
       onCompleted: () => {
         setDeleting(false);
-        ToastAndroid.show('Trip deleted successfully', ToastAndroid.SHORT);
+        toast('Trip deleted successfully');
       },
     });
   };
@@ -102,15 +103,12 @@ function TripMenuList({
       ],
       onError: (error) => {
         console.log('Error', error.message);
-        ToastAndroid.show('Failed to regenerate trip', ToastAndroid.SHORT);
+        toast('Failed to regenerate trip');
         setRegenerating(false);
       },
       onCompleted: () => {
         setTimeout(() => {
-          ToastAndroid.show(
-            'Trip regenerated successfully',
-            ToastAndroid.SHORT,
-          );
+          toast('Trip regenerated successfully');
           setRegenerating(false);
         }, 10000);
       },

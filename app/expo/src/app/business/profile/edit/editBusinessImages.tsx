@@ -4,7 +4,6 @@ import {
   Image,
   StyleSheet,
   Text,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -21,6 +20,7 @@ import BasicButton from '~/components/Button/BasicButton';
 import GradientButton from '~/components/Button/GradientButton';
 import { AuthContext } from '~/context/AuthProvider';
 import { EditPoiDocument, GetPoiImagesDocument } from '~/graphql/generated';
+import { toast } from '~/utils/toast';
 
 const MAX_IMAGES = 5;
 
@@ -132,7 +132,7 @@ const BusinessPhotos: React.FC = () => {
           router.push('/business/(tabs)');
           setIsSubmitting(false);
           console.log(uploadedUrls);
-          ToastAndroid.show('Successfully edited.', 2000);
+          toast('Successfully edited.');
         }, 3000);
       },
       onError: (err) => {
