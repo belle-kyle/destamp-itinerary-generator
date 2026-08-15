@@ -37,8 +37,8 @@ export default function MapScreen() {
 
   const edgePadding = { top: 100, right: 50, bottom: 200, left: 50 };
 
-  const googleMapsKey = Constants.expoConfig?.extra
-    ?.GOOGLE_MAPS_API_KEY as string;
+  const googleDirectionsKey = Constants.expoConfig?.extra
+    ?.GOOGLE_DISTANCE_MATRIX_API_KEY as string;
 
   const handleBack = () => {
     return router.back();
@@ -183,7 +183,7 @@ export default function MapScreen() {
       <MapView
         ref={mapRef}
         className="h-screen w-screen"
-        provider={PROVIDER_GOOGLE}
+        provider={Platform.OS === 'android' ? PROVIDER_GOOGLE : undefined}
         onMapReady={() => {
           const firstLocation = dailyItineraryPois![0];
           const secondLocation = dailyItineraryPois![1];
@@ -251,7 +251,7 @@ export default function MapScreen() {
               longitude: dailyItineraryPois![currentPlaceIndex]
                 ?.longitude as number,
             }}
-            apikey={googleMapsKey}
+            apikey={googleDirectionsKey}
             strokeColor="#F65A82"
             strokeWidth={9}
           />

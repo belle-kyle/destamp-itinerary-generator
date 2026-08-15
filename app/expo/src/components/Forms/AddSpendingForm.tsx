@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Alert,
-  Platform,
-  Pressable,
-  Text,
-  TextInput,
-  ToastAndroid,
-  View,
-} from 'react-native';
+import { Alert, Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { useMutation } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import DateTimePicker, {
@@ -22,6 +14,7 @@ import {
   GetTripExpensesDocument,
   MutationCreateExpenseArgs,
 } from '~/graphql/generated';
+import { showToast } from '~/utils/utils';
 import GradientButton from '../Button/GradientButton';
 import { CustomTextInput } from '../FormField/CustomTextInput';
 import {
@@ -122,7 +115,7 @@ export default function AddSpendingForm({
     });
     closeModal();
     setTimeout(() => setIsSubmitting(false), 500);
-    ToastAndroid.show('Expense added.', ToastAndroid.SHORT);
+    showToast('Expense added.');
   };
 
   return (

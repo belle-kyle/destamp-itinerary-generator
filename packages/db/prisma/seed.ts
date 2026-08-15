@@ -50,10 +50,33 @@ const clearDb = async () => {
   });
 };
 
+// PointOfInterest.userId is required (POIs are owned by the business
+// operator that listed them), but the bulk-imported reference data below
+// has no real owning account - attach it all to one dedicated seed user.
+// This exact id is also hardcoded in Trip.resolver.ts's createTrip query as
+// the recognized owner of unverified scraped/seed data - keep them in sync.
+const SEED_USER_ID = 'ccsdestamp2023';
+
+const ensureSeedUser = async () => {
+  return db.user.upsert({
+    where: { id: SEED_USER_ID },
+    update: {},
+    create: {
+      id: SEED_USER_ID,
+      email: 'ccsdestamp2023@destamp.internal',
+      password: 'not-a-real-password',
+      firstName: 'Destamp',
+      lastName: 'Seed Data',
+      isBusinessOperator: true,
+    },
+  });
+};
+
 const createAttractions = async () => {
   for (const attraction of attractions) {
     await db.pointOfInterest.create({
       data: {
+        user: { connect: { id: SEED_USER_ID } },
         address: attraction.address,
         name: attraction.title,
         visitDuration: attraction.visitDuration,
@@ -148,6 +171,7 @@ const createAccommodations = async () => {
         },
         poi: {
           create: {
+            user: { connect: { id: SEED_USER_ID } },
             address: accommodation.address,
             latitude: accommodation.latitude,
             longitude: accommodation.longitude,
@@ -192,6 +216,7 @@ const createRestaurants = async () => {
         },
         poi: {
           create: {
+            user: { connect: { id: SEED_USER_ID } },
             address: restaurant.address,
             latitude: restaurant.latitude,
             longitude: restaurant.longitude,
@@ -267,6 +292,7 @@ const createRestaurants = async () => {
 };
 
 clearDb()
+  .then(() => ensureSeedUser())
   .then(() => createAccommodations())
   .then(() => createRestaurants())
   .then(() => createAttractions())

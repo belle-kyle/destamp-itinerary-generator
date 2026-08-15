@@ -1,5 +1,12 @@
 import { useRef, useState } from 'react';
-import { Dimensions, FlatList, ScrollView, Text, View } from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@apollo/client';
@@ -122,7 +129,7 @@ export default function ItineraryScreen() {
         <MapView
           className="h-[280] w-screen"
           ref={mapRef}
-          provider={PROVIDER_GOOGLE}
+          provider={Platform.OS === 'android' ? PROVIDER_GOOGLE : undefined}
           initialRegion={{
             latitude: 10.7201501,
             longitude: 122.5621063,

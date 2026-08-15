@@ -15,7 +15,7 @@ const PointOfInterest = objectType({
     t.float('visitDuration');
     t.boolean('isAttraction');
     t.boolean('isVerified');
-    t.string('businessPermitImage');
+    t.nullable.string('businessPermitImage');
     t.field('createdAt', { type: 'DateTime' });
     t.field('updatedAt', { type: 'DateTime' });
     t.list.field('categories', {

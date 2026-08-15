@@ -206,7 +206,7 @@ input OperatingHoursInput {
 type Poi {
   accommodation: Accommodation
   address: String!
-  businessPermitImage: String!
+  businessPermitImage: String
   categories: [Category!]!
   contactNumber: String!
   createdAt: DateTime!

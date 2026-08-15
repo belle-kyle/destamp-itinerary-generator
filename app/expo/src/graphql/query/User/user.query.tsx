@@ -20,10 +20,12 @@ export const GetTravelerInfoQuery = gql(
       firstName
       lastName
       traveler {
+        id
         stamps {
           id
           title
           image {
+            id
             url
           }
         }

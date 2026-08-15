@@ -1,5 +1,5 @@
 import { NexusGenInputs } from '../../graphql/generated/nexus';
-import { fetchMapboxMatrix } from '../../service/mapboxService';
+import { fetchDistanceMatrix } from '../../service/googleMapsService';
 import { Chromosome } from './types';
 import {
   calculateAveragePrice,
@@ -38,7 +38,7 @@ export async function evaluateFitness(
 
     const coordinatePairs = getCoordinatesParam(getCoordinates(genes));
 
-    const matrix = await fetchMapboxMatrix('mapbox/driving', coordinatePairs);
+    const matrix = await fetchDistanceMatrix('driving', coordinatePairs);
 
     const avgDistance = getMatrixAvg(matrix.distances);
     const avgDuration = getMatrixAvg(matrix.durations);

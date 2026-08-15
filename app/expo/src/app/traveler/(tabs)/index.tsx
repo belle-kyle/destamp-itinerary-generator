@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { router } from 'expo-router';
@@ -33,16 +33,17 @@ export default function MyTrip() {
     variables: {
       userId: user ? user.id : '',
     },
-    onCompleted(data) {
-      if (data && data.travelerAccount.user) {
-        setUser({
-          isPremium: data.travelerAccount.isPremium || false,
-          userId: user ? user.id : '',
-          tripCount: data.travelerAccount.user?.traveler?.tripCount as number,
-        });
-      }
-    },
   });
+
+  useEffect(() => {
+    if (data && data.travelerAccount.user) {
+      setUser({
+        isPremium: data.travelerAccount.isPremium || false,
+        userId: user ? user.id : '',
+        tripCount: data.travelerAccount.user?.traveler?.tripCount as number,
+      });
+    }
+  }, [data, user, setUser]);
 
   const unclaimedStampsQuery = useQuery(GetUnclaimedStampsDocument, {
     variables: {

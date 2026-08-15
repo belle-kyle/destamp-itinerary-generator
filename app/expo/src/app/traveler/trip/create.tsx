@@ -178,11 +178,24 @@ export default function CreateTripScreen() {
     }
   };
 
-  const handleStepPress = (step: number) => {
+  // react-native-collapsible only measures a section's content height on a
+  // collapsed -> expanded *transition* (componentDidUpdate) - it never
+  // measures on initial mount. Adding a step to the Accordion's `sections`
+  // array and marking it active in the same update makes it mount already
+  // expanded, so its content is skipped entirely and renders at height 0.
+  // Mounting it collapsed first, then activating on the next tick, gives it
+  // a real transition to measure against.
+  const goToSection = (step: number) => {
     if (!visitedSteps.includes(step)) {
       setVisitedSteps([...visitedSteps, step]);
+      requestAnimationFrame(() => setSections([step]));
+    } else {
+      setSections([step]);
     }
-    setSections([step]);
+  };
+
+  const handleStepPress = (step: number) => {
+    goToSection(step);
   };
 
   const handleNextStep = () => {
@@ -215,11 +228,7 @@ export default function CreateTripScreen() {
       setCompletedSteps([...completedSteps, activeSection]);
 
       const nextStep = activeSection + 1;
-      setSections([nextStep]);
-
-      if (!visitedSteps.includes(nextStep)) {
-        setVisitedSteps([...visitedSteps, nextStep]);
-      }
+      goToSection(nextStep);
     }
 
     scrollViewRef.current?.scrollTo({

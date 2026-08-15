@@ -259,7 +259,7 @@ export interface NexusGenObjects {
   Poi: {
     // root type
     address: string; // String!
-    businessPermitImage: string; // String!
+    businessPermitImage?: string | null; // String
     contactNumber: string; // String!
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     description?: string | null; // String
@@ -452,7 +452,7 @@ export interface NexusGenFieldTypes {
     // field return type
     accommodation: NexusGenRootTypes['Accommodation'] | null; // Accommodation
     address: string; // String!
-    businessPermitImage: string; // String!
+    businessPermitImage: string | null; // String
     categories: NexusGenRootTypes['Category'][]; // [Category!]!
     contactNumber: string; // String!
     createdAt: NexusGenScalars['DateTime']; // DateTime!

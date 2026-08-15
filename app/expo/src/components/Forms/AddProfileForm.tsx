@@ -17,7 +17,7 @@ import { CustomTextInput } from '../FormField/CustomTextInput';
 import { AddProfileSchema, addProfileSchema } from './schema/addProfileSchema';
 
 export default function AddProfileForm() {
-  const { email, password, type } = useLocalSearchParams();
+  const { email, password, userId, type } = useLocalSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { handleSubmit, control } = useForm<AddProfileSchema>({
@@ -30,55 +30,61 @@ export default function AddProfileForm() {
   const onSubmit: SubmitHandler<AddProfileSchema> = async (input) => {
     setIsSubmitting(true);
 
-    const { error, data } = await supabase.auth.signUp({
-      email: email as string,
-      password: password as string,
-      options: {
+    // The Supabase account itself was already created right after email
+    // verification (see SignupForm.tsx) - this step only fills in the
+    // profile details for that existing account. If the Supabase project
+    // still requires its own email confirmation on top of Clerk's, there's
+    // no session yet at this point - the firstName/lastName below still get
+    // saved via createUser, so skip this metadata update rather than block.
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (sessionData.session) {
+      const { error } = await supabase.auth.updateUser({
         data: {
           userType: type as string,
           firstName: input.firstName,
           lastName: input.lastName,
         },
+      });
+
+      if (error) Alert.alert('Error', error.message);
+    }
+
+    const createUserInput: MutationCreateUserArgs = {
+      type: type as string,
+      input: {
+        id: userId as string,
+        email: email as string,
+        password: password as string,
+        firstName: input.firstName,
+        lastName: input.lastName,
       },
+    };
+
+    await createUser({
+      variables: {
+        type: createUserInput.type,
+        input: createUserInput.input,
+      },
+      onError: (err) => {
+        Alert.alert('Error', err.message);
+      },
+      refetchQueries: [
+        {
+          query: GetTripsDocument,
+          variables: {
+            userId: userId as string,
+          },
+        },
+        {
+          query: GetUserPoisDocument,
+          variables: {
+            userId: userId as string,
+          },
+        },
+      ],
     });
 
-    if (error) Alert.alert('Sign Up Error', error.message);
-    else if (data && data.user) {
-      const createUserInput: MutationCreateUserArgs = {
-        type: type as string,
-        input: {
-          id: data!.user.id,
-          email: email as string,
-          password: password as string,
-          firstName: input.firstName,
-          lastName: input.lastName,
-        },
-      };
-
-      await createUser({
-        variables: {
-          type: createUserInput.type,
-          input: createUserInput.input,
-        },
-        onError: (err) => {
-          Alert.alert('Error', err.message);
-        },
-        refetchQueries: [
-          {
-            query: GetTripsDocument,
-            variables: {
-              userId: data.user.id,
-            },
-          },
-          {
-            query: GetUserPoisDocument,
-            variables: {
-              userId: data.user.id,
-            },
-          },
-        ],
-      });
-    }
+    setIsSubmitting(false);
   };
 
   return (

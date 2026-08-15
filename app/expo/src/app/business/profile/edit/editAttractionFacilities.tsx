@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Dimensions, Text, ToastAndroid, View } from 'react-native';
+import { Alert, Dimensions, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMutation, useQuery } from '@apollo/client';
@@ -20,6 +20,7 @@ import {
   GetBusinessDetailsDocument,
   GetPoiFacilitiesDocument,
 } from '~/graphql/generated';
+import { showToast } from '~/utils/utils';
 
 const AttractionFacilities = () => {
   const { poiId, placeType, imageList } = useLocalSearchParams();
@@ -78,7 +79,7 @@ const AttractionFacilities = () => {
             },
           });
           setIsSubmitting(false);
-          ToastAndroid.show('Successfully edited.', 2000);
+          showToast('Successfully edited.');
         }, 5000);
       },
       onError: (error) => {
