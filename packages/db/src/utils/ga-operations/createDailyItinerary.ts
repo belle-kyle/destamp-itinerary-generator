@@ -1,6 +1,6 @@
 import { PointOfInterest } from '.';
 import { NexusGenInputs } from '../../graphql/generated/nexus';
-import { fetchMapboxMatrix } from '../../service/mapboxService';
+import { fetchDistanceMatrix } from '../../service/googleMapsService';
 import { getBudgetAllocation } from './budgetAllocation';
 import shortestPath from './shortestPath';
 import { Chromosome as Chrom } from './types';
@@ -81,7 +81,7 @@ export const createDailyItinerary = async (
       ].concat(genes);
 
   const coordinatePairs = getCoordinatesParam(getCoordinates(pois));
-  const matrix = await fetchMapboxMatrix('mapbox/driving', coordinatePairs);
+  const matrix = await fetchDistanceMatrix('driving', coordinatePairs);
 
   if (pois.length > 1) {
     if (isPremium) {

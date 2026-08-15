@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, ScrollView, Text, ToastAndroid, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMutation, useQuery } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,6 +18,7 @@ import {
   EditPoiDocument,
   GetBusinessDetailsDocument,
 } from '~/graphql/generated';
+import { showToast } from '~/utils/utils';
 
 const BusinessBasicInformation: React.FC = () => {
   const { poiId, placeType, imageList } = useLocalSearchParams();
@@ -77,7 +78,7 @@ const BusinessBasicInformation: React.FC = () => {
             },
           });
           setIsSubmitting(false);
-          ToastAndroid.show('Successfully edited.', 2000);
+          showToast('Successfully edited.');
         }, 5000);
       },
       onError: (err) => {

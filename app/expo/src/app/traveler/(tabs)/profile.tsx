@@ -45,7 +45,9 @@ export default function Profile() {
             )}
           </View>
           <View className="mx-5 mt-5 items-center">
-            <Text className="font-poppins-medium text-2xl text-gray-500">{`${data?.user.firstName} ${data?.user.lastName}`}</Text>
+            {data && (
+              <Text className="font-poppins-medium text-2xl text-gray-500">{`${data.user.firstName} ${data.user.lastName}`}</Text>
+            )}
             {data && (
               <Text className="font-poppins text-xs text-gray-500">
                 {data.user.email}

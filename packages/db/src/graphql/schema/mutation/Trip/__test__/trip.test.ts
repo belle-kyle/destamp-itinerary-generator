@@ -1,6 +1,6 @@
 import { TravelSize } from '@prisma/client';
 
-import { fetchMapboxMatrix } from '../../../../../service/mapboxService';
+import { fetchDistanceMatrix } from '../../../../../service/googleMapsService';
 import { MockContext } from '../../../../../types/types';
 import { Context, createMockContext } from '../../../../context';
 import { createTrip, deleteTrip } from '../Trip.resolver';
@@ -9,8 +9,8 @@ import { pointOfInterests } from './mock/mock';
 let mockContext: MockContext;
 let context: Context;
 
-jest.mock('../../../../../service/mapboxService', () => ({
-  fetchMapboxMatrix: jest.fn(),
+jest.mock('../../../../../service/googleMapsService', () => ({
+  fetchDistanceMatrix: jest.fn(),
 }));
 
 beforeEach(() => {
@@ -35,7 +35,7 @@ describe('createTrip mutation', () => {
         mockMatrix.durations[i]![j] = j * 10;
       }
     }
-    (fetchMapboxMatrix as jest.Mock).mockImplementation(() =>
+    (fetchDistanceMatrix as jest.Mock).mockImplementation(() =>
       Promise.resolve(mockMatrix),
     );
 

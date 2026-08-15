@@ -8,6 +8,8 @@ const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY;
 const CLERK_PUBLISHABLE_KEY = process.env.CLERK_PUBLISHABLE_KEY;
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+const GOOGLE_DISTANCE_MATRIX_API_KEY =
+  process.env.GOOGLE_DISTANCE_MATRIX_API_KEY;
 
 if (typeof SUPABASE_URL !== 'string' || typeof SUPABASE_ANON_KEY !== 'string') {
   throw new Error('Missing Supabase URL or anonymous key');
@@ -23,6 +25,10 @@ if (typeof MAPBOX_API_KEY !== 'string') {
 
 if (typeof GOOGLE_MAPS_API_KEY !== 'string') {
   throw new Error('Missing Google Maps API key');
+}
+
+if (typeof GOOGLE_DISTANCE_MATRIX_API_KEY !== 'string') {
+  throw new Error('Missing Google Distance Matrix API key');
 }
 
 const defineConfig = (): ExpoConfig => ({
@@ -68,6 +74,7 @@ const defineConfig = (): ExpoConfig => ({
     MAPBOX_API_KEY,
     CLERK_PUBLISHABLE_KEY,
     GOOGLE_MAPS_API_KEY,
+    GOOGLE_DISTANCE_MATRIX_API_KEY,
   },
   experiments: {
     tsconfigPaths: true,

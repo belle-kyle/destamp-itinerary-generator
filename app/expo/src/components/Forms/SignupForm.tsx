@@ -4,6 +4,7 @@ import OTPTextInput from 'react-native-otp-textinput';
 import { router } from 'expo-router';
 import { useSignUp } from '@clerk/clerk-expo';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { supabase } from 'config/initSupabase';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import UnselectedBusinessOwner from '../../../assets/images/businessman-unselected.svg';
@@ -90,14 +91,30 @@ export default function SignUpForm() {
       setPendingVerification(false);
 
       if (completeSignUp && completeSignUp.createdSessionId) {
-        router.push({
-          pathname: '/(auth)/profile',
-          params: {
-            email: input.email,
-            password: input.password,
-            type: userType,
-          },
+        // Create the real, login-usable account right away so an email is
+        // never left "taken" in Clerk without a matching Supabase account.
+        const { error: signUpError, data } = await supabase.auth.signUp({
+          email: input.email,
+          password: input.password,
+          options: { data: { userType } },
         });
+
+        if (signUpError) {
+          Alert.alert('Error signing up', signUpError.message);
+          return;
+        }
+
+        if (data && data.user) {
+          router.push({
+            pathname: '/(auth)/profile',
+            params: {
+              email: input.email,
+              password: input.password,
+              userId: data.user.id,
+              type: userType,
+            },
+          });
+        }
       }
     } catch (err) {
       const error = err as ErrorJson;

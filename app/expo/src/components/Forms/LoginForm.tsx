@@ -26,8 +26,13 @@ export default function LoginForm() {
       password: input.password,
     });
 
-    if (error && error.name == 'AuthApiError')
-      Alert.alert('Sign In Error', 'Wrong email or password.');
+    if (error) {
+      const message =
+        error.message === 'Invalid login credentials'
+          ? 'Wrong email or password.'
+          : error.message;
+      Alert.alert('Sign In Error', message);
+    }
 
     setIsSubmitting(false);
   };

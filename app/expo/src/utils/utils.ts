@@ -1,10 +1,20 @@
-import { Alert } from 'react-native';
+import { Alert, Platform, ToastAndroid } from 'react-native';
 import { Moment } from 'moment';
 
 import { ExpenseCategory } from '~/graphql/generated';
 
 export function amountFormatter(amount: number) {
   return new Intl.NumberFormat().format(Math.floor(amount));
+}
+
+// ToastAndroid only exists on Android - calling it on iOS throws. Alert is
+// the closest cross-platform equivalent for a brief confirmation message.
+export function showToast(message: string) {
+  if (Platform.OS === 'android') {
+    ToastAndroid.show(message, ToastAndroid.SHORT);
+  } else {
+    Alert.alert(message);
+  }
 }
 
 export function confirmationAlert(

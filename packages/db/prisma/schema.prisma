@@ -101,7 +101,7 @@ model PointOfInterest {
   visitDuration       Float   @map("visit_duration")
   isAttraction        Boolean @default(true) @map("is_attraction")
   isVerified          Boolean @default(false) @map("is_verified")
-  businessPermitImage String  @map("business_permit_image") @db.VarChar(255)
+  businessPermitImage String? @map("business_permit_image") @db.VarChar(255)
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

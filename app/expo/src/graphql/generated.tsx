@@ -310,7 +310,7 @@ export type Poi = {
   __typename?: 'Poi';
   accommodation?: Maybe<Accommodation>;
   address: Scalars['String']['output'];
-  businessPermitImage: Scalars['String']['output'];
+  businessPermitImage?: Maybe<Scalars['String']['output']>;
   categories: Array<Category>;
   contactNumber: Scalars['String']['output'];
   createdAt: Scalars['DateTime']['output'];
@@ -951,7 +951,7 @@ export type PoiResolvers<
   >;
   address?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   businessPermitImage?: Resolver<
-    ResolversTypes['String'],
+    Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
@@ -1452,6 +1452,7 @@ export type GetUserPoisQuery = {
     isVerified: boolean;
     images: Array<{
       __typename?: 'PoiImage';
+      id: number;
       image: { __typename?: 'Image'; id: string; url: string };
     }>;
   }>;
@@ -1477,14 +1478,14 @@ export type GetBusinessDetailsQuery = {
     accommodation?: {
       __typename?: 'Accommodation';
       id: number;
-      amenities: Array<{ __typename?: 'Amenity'; name: string }>;
+      amenities: Array<{ __typename?: 'Amenity'; id: number; name: string }>;
     } | null;
     restaurant?: {
       __typename?: 'Restaurant';
       id: number;
       atmospheres: Array<string>;
     } | null;
-    categories: Array<{ __typename?: 'Category'; name: string }>;
+    categories: Array<{ __typename?: 'Category'; id: number; name: string }>;
     operatingHours: Array<{
       __typename?: 'OperatingHour';
       id: number;
@@ -1508,7 +1509,8 @@ export type GetPoiImagesQuery = {
     id: string;
     images: Array<{
       __typename?: 'PoiImage';
-      image: { __typename?: 'Image'; url: string };
+      id: number;
+      image: { __typename?: 'Image'; id: string; url: string };
     }>;
   };
 };
@@ -1567,6 +1569,7 @@ export type GetTripsQuery = {
       __typename?: 'User';
       traveler?: {
         __typename?: 'Traveler';
+        id: string;
         tripCount: number;
         trips: Array<{
           __typename?: 'Trip';
@@ -1615,6 +1618,7 @@ export type GetTripItineraryQuery = {
   __typename?: 'Query';
   trip: {
     __typename?: 'Trip';
+    id: number;
     startDate: any;
     endDate: any;
     isAccommodationIncluded: boolean;
@@ -1649,7 +1653,8 @@ export type GetTripItineraryQuery = {
           accommodation?: { __typename?: 'Accommodation'; id: number } | null;
           images: Array<{
             __typename?: 'PoiImage';
-            image: { __typename?: 'Image'; url: string };
+            id: number;
+            image: { __typename?: 'Image'; id: string; url: string };
           }>;
         };
       }>;
@@ -1665,6 +1670,7 @@ export type GetTripMapItineraryQuery = {
   __typename?: 'Query';
   trip: {
     __typename?: 'Trip';
+    id: number;
     isAccommodationIncluded: boolean;
     startingLocation: any;
     dailyItineraries: Array<{
@@ -1685,7 +1691,8 @@ export type GetTripMapItineraryQuery = {
           latitude: number;
           images: Array<{
             __typename?: 'PoiImage';
-            image: { __typename?: 'Image'; url: string };
+            id: number;
+            image: { __typename?: 'Image'; id: string; url: string };
           }>;
         };
       }>;
@@ -1708,9 +1715,10 @@ export type GetDailyItineraryPoiDetailsQuery = {
     description?: string | null;
     address: string;
     contactNumber: string;
-    categories: Array<{ __typename?: 'Category'; name: string }>;
+    categories: Array<{ __typename?: 'Category'; id: number; name: string }>;
     operatingHours: Array<{
       __typename?: 'OperatingHour';
+      id: number;
       day: number;
       openTime?: any | null;
       closeTime?: any | null;
@@ -1719,10 +1727,12 @@ export type GetDailyItineraryPoiDetailsQuery = {
     }>;
     accommodation?: {
       __typename?: 'Accommodation';
-      amenities: Array<{ __typename?: 'Amenity'; name: string }>;
+      id: number;
+      amenities: Array<{ __typename?: 'Amenity'; id: number; name: string }>;
     } | null;
     restaurant?: {
       __typename?: 'Restaurant';
+      id: number;
       atmospheres: Array<string>;
     } | null;
   };
@@ -1757,11 +1767,12 @@ export type GetTravelerInfoQuery = {
     lastName: string;
     traveler?: {
       __typename?: 'Traveler';
+      id: string;
       stamps: Array<{
         __typename?: 'Stamp';
         id: number;
         title: string;
-        image: { __typename?: 'Image'; url: string };
+        image: { __typename?: 'Image'; id: string; url: string };
       }>;
     } | null;
   };
@@ -2840,6 +2851,7 @@ export const GetUserPoisDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'image' },
@@ -2940,6 +2952,10 @@ export const GetBusinessDetailsDocument = {
                           selections: [
                             {
                               kind: 'Field',
+                              name: { kind: 'Name', value: 'id' },
+                            },
+                            {
+                              kind: 'Field',
                               name: { kind: 'Name', value: 'name' },
                             },
                           ],
@@ -2968,6 +2984,7 @@ export const GetBusinessDetailsDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                     ],
                   },
@@ -3058,12 +3075,17 @@ export const GetPoiImagesDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'image' },
                         selectionSet: {
                           kind: 'SelectionSet',
                           selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'id' },
+                            },
                             {
                               kind: 'Field',
                               name: { kind: 'Name', value: 'url' },
@@ -3267,6 +3289,10 @@ export const GetTripsDocument = {
                           selections: [
                             {
                               kind: 'Field',
+                              name: { kind: 'Name', value: 'id' },
+                            },
+                            {
+                              kind: 'Field',
                               name: { kind: 'Name', value: 'tripCount' },
                             },
                             {
@@ -3447,6 +3473,7 @@ export const GetTripItineraryDocument = {
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'startDate' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'endDate' } },
                 {
@@ -3592,6 +3619,10 @@ export const GetTripItineraryDocument = {
                                       selections: [
                                         {
                                           kind: 'Field',
+                                          name: { kind: 'Name', value: 'id' },
+                                        },
+                                        {
+                                          kind: 'Field',
                                           name: {
                                             kind: 'Name',
                                             value: 'image',
@@ -3599,6 +3630,13 @@ export const GetTripItineraryDocument = {
                                           selectionSet: {
                                             kind: 'SelectionSet',
                                             selections: [
+                                              {
+                                                kind: 'Field',
+                                                name: {
+                                                  kind: 'Name',
+                                                  value: 'id',
+                                                },
+                                              },
                                               {
                                                 kind: 'Field',
                                                 name: {
@@ -3671,6 +3709,7 @@ export const GetTripMapItineraryDocument = {
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'isAccommodationIncluded' },
@@ -3742,6 +3781,10 @@ export const GetTripMapItineraryDocument = {
                                       selections: [
                                         {
                                           kind: 'Field',
+                                          name: { kind: 'Name', value: 'id' },
+                                        },
+                                        {
+                                          kind: 'Field',
                                           name: {
                                             kind: 'Name',
                                             value: 'image',
@@ -3749,6 +3792,13 @@ export const GetTripMapItineraryDocument = {
                                           selectionSet: {
                                             kind: 'SelectionSet',
                                             selections: [
+                                              {
+                                                kind: 'Field',
+                                                name: {
+                                                  kind: 'Name',
+                                                  value: 'id',
+                                                },
+                                              },
                                               {
                                                 kind: 'Field',
                                                 name: {
@@ -3843,6 +3893,7 @@ export const GetDailyItineraryPoiDetailsDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                     ],
                   },
@@ -3853,6 +3904,7 @@ export const GetDailyItineraryPoiDetailsDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'day' } },
                       {
                         kind: 'Field',
@@ -3879,12 +3931,17 @@ export const GetDailyItineraryPoiDetailsDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'amenities' },
                         selectionSet: {
                           kind: 'SelectionSet',
                           selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'id' },
+                            },
                             {
                               kind: 'Field',
                               name: { kind: 'Name', value: 'name' },
@@ -3901,6 +3958,7 @@ export const GetDailyItineraryPoiDetailsDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'atmospheres' },
@@ -4028,6 +4086,7 @@ export const GetTravelerInfoDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'stamps' },
@@ -4048,6 +4107,10 @@ export const GetTravelerInfoDocument = {
                               selectionSet: {
                                 kind: 'SelectionSet',
                                 selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'id' },
+                                  },
                                   {
                                     kind: 'Field',
                                     name: { kind: 'Name', value: 'url' },

@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Text, ToastAndroid, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
 import * as Haptics from 'expo-haptics';
@@ -15,7 +15,7 @@ import {
   SubscribeToPremiumDocument,
 } from '~/graphql/generated';
 import userStore from '~/store/userStore';
-import { confirmationAlert } from '~/utils/utils';
+import { confirmationAlert, showToast } from '~/utils/utils';
 import Back from '../../../../assets/images/back-btn.svg';
 import Route from '../../../../assets/images/optimized-route.svg';
 import Personalized from '../../../../assets/images/personalized.svg';
@@ -69,10 +69,7 @@ export default function Subscription() {
       },
       onCompleted: () => {
         setIsSubmitting(false);
-        ToastAndroid.show(
-          'Subscribed to premium successfully.',
-          ToastAndroid.SHORT,
-        );
+        showToast('Subscribed to premium successfully.');
         setUser({
           tripCount: tripCount,
           userId: userId,
@@ -82,10 +79,7 @@ export default function Subscription() {
       onError: (err) => {
         setIsSubmitting(false);
         console.log('Error', err.message);
-        ToastAndroid.show(
-          'Failed to subscribe to premium.',
-          ToastAndroid.SHORT,
-        );
+        showToast('Failed to subscribe to premium.');
       },
       refetchQueries: [
         {
@@ -106,7 +100,7 @@ export default function Subscription() {
       },
       onCompleted: () => {
         setIsSubmitting(false);
-        ToastAndroid.show('Cancelled subscription.', ToastAndroid.SHORT);
+        showToast('Cancelled subscription.');
         setUser({
           tripCount: tripCount,
           userId: userId,
@@ -116,7 +110,7 @@ export default function Subscription() {
       onError: (err) => {
         setIsSubmitting(false);
         console.log('Error', err.message);
-        ToastAndroid.show('Failed to cancel subscription.', ToastAndroid.SHORT);
+        showToast('Failed to cancel subscription.');
       },
       refetchQueries: [
         {

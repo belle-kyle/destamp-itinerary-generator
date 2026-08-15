@@ -8,13 +8,14 @@ export const GetUserPoisQuery = gql(
       address
       isVerified
       images {
+        id
         image {
           id
           url
         }
-      } 
+      }
     }
-  }  
+  }
   `,
 );
 
@@ -33,6 +34,7 @@ export const GetBusinessDetailsQuery = gql(
       accommodation {
         id
         amenities {
+          id
           name
         }
       }
@@ -41,6 +43,7 @@ export const GetBusinessDetailsQuery = gql(
         atmospheres
       }
       categories {
+        id
         name
       }
       operatingHours {
@@ -60,7 +63,9 @@ export const GetPoiImagesQuery = gql(
   `query GetPoiImages($poiId: String!) {
     poi(poiId: $poiId) {
       images {
+        id
         image {
+          id
           url
         }
       }
