@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Platform } from 'react-native';
 import { AutocompleteDropdownContextProvider } from 'react-native-autocomplete-dropdown';
 import Constants from 'expo-constants';
 import { useFonts } from 'expo-font';
@@ -25,9 +26,12 @@ export {
 
 // The old deployed backend (cpu-destamp.onrender.com) has been torn down -
 // point at the local dev server started by `pnpm dev` (packages/db) instead.
-// `localhost` resolves to the host Mac from the iOS Simulator, but NOT from
-// a physical device or Android emulator - those need the host's LAN IP.
-const URL = 'http://localhost:4000';
+// `localhost` reaches the host Mac from the iOS Simulator, but the Android
+// emulator has its own loopback and needs the documented 10.0.2.2 alias
+// instead. Neither works from a physical device on either platform - that
+// needs the host machine's actual LAN IP substituted in here.
+const URL =
+  Platform.OS === 'android' ? 'http://10.0.2.2:4000' : 'http://localhost:4000';
 
 const httpLink = createHttpLink({
   uri: URL,
